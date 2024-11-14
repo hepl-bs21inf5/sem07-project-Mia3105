@@ -58,7 +58,7 @@ function refresh(event: Event): void {
   cheval.value = null
   chat.value = null
   capitale.value = null
-  lausanne.value = ([])
+  lausanne.value = []
 }
 </script>
 
@@ -119,6 +119,8 @@ function refresh(event: Event): void {
 
   <form @submit="submit">
     <button class="btn btn-primary" :class="{ disabled: !filled }" type="submit">Terminer</button>
-    <button style="margin-left: 10em" class="btn btn-primary" button @:click="refresh">Réinitialiser</button>
+    <button style="margin-left: 10em" class="btn btn-primary" button @:click="refresh">
+      Réinitialiser
+    </button>
   </form>
 </template>
