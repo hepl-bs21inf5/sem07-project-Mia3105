@@ -1,11 +1,13 @@
 ## Journal de bord
 
 Semaine 1
-Tache | Temps estimé | Temps passé | Commentaires
-Vue | 15 minutes | 10 minutes |  
-Bootstrap | 30 minutes | 20 minutes |
-Quiz | 1h | 10h45 - 13h + ... |
-Rapport | 20 minutes | |
+
+| Tache     | Temps estimé | Temps passé | Commentaires |
+| --------- | ------------ | ----------- | ------------ |
+| Vue       | 15 minutes   | 10 minutes  |
+| Bootstrap | 30 minutes   | 20 minutes  |
+| Quiz      | 1h           | 2h20        |
+| Rapport   | 20 minutes   | 25 minutes  |
 
 Difficultés :
 Dans un premier temps, j'ai trouvé assez difficile de faire le compteur de score et de faire le bouton Réinitialiser. J'ai encore un problème, car si toutes les questions sont complétées, le bouton pour réinitialiser fonctionne une première fois comme le bouton Temriner et ensuite en appuyant une deuxième fois, il réinitialise.
@@ -23,9 +25,9 @@ Questions :
     - router/index.ts
         C'est un fichier TypeScript. Il permet de ...
     - AboutView.vue
-        Il permet de définir la mise en page du quiz.
+        Il permet de définir l'onglet à propos qui donne les informations sur la page.
     - HomeView.vue
-
+        ...
     - QuizForm.vue
         Il permet d'écrire tout ce qui sera afficher dans le quiz.
 
@@ -43,3 +45,23 @@ Questions :
 
 Suite du projet :
 Je trouve frustrant de devoir à chaque fois tout réécrire, autant pour créer les questions que dans la fonction filled. Il faudrait trouver un moyen d'écrire cela de façon plus concise.
+
+---
+
+Semaine 2
+
+| Tache            | Temps estimé | Temps passé   | Commentaires |
+| ---------------- | ------------ | ------------- | ------------ |
+| QuestionRadio    | 40 minutes   | 25 minutes    |
+| QuestionText     | 30 minutes   | 45 minutes    |
+| API              | 40 minutes   | 20 minutes    |
+| QuestionCheckbox | 40 minutes   | 25 minutes    |
+| (BONUS)          |              | + 12h25 - ... |
+| Rapport          | 25 minutes   | minutes       |
+
+Difficultés :
+
+Explications et réflexions sur le code :
+Questions : - Comment rendre la propriété placeholder optionnelle ?
+
+Suite du projet :
