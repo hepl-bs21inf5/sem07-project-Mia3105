@@ -7,37 +7,21 @@ import QuestionCheckbox from '@/components/QuestionCheckbox.vue'
 const cheval = ref<string | null>(null)
 const chat = ref<string | null>(null)
 const capitale = ref<string | null>(null)
-const lausanne = ref([])
+const lausanne = ref<string[]>([])
+const correctAnswers = ref<boolean[]>([])
+const score = computed<number>(() => correctAnswers.value.filter((value) => value).length)
+const totalScore = computed<number>(() => correctAnswers.value.length)
+
 const filled = computed<boolean>(
   () =>
     cheval.value !== null &&
     chat.value !== null &&
     capitale.value !== null &&
-    lausanne.value !== null,
+    lausanne.value !== [],
 )
 
 function submit(event: Event): void {
   event.preventDefault()
-
-  let point = 0
-  if (cheval.value == 'blanc') {
-    point += 1
-  }
-  if (chat.value == '4' || chat.value == '4 pattes') {
-    point += 1
-  }
-  if (capitale.value == 'Berne') {
-    point += 1
-  }
-  if (lausanne.value in ['Canton de Vaud', 'en Suisse']) {
-    point += 1
-  }
-
-  let message: string = ''
-  const nbre_question = 4
-  if (point == nbre_question) {
-    message = "Bravo ! C'est parfait !"
-  }
 
   if (filled.value) {
     alert(`
@@ -45,10 +29,6 @@ function submit(event: Event): void {
     Vous avez choisi ${chat.value}
     Vous avez choisi la ville de ${capitale.value}
     Vous avez choisi ${lausanne.value}
-
-
-    Vous avez fait ${point} sur ${nbre_question} !
-    ${message}
     `)
   }
 }
@@ -66,7 +46,8 @@ function refresh(event: Event): void {
   <form>
     <QuestionRadio
       id="cheval"
-      v-model="cheval"
+      v-model="correctAnswers[0]"
+      answer="blanc"
       text="De quelle couleur est le cheval blanc de Napoléon ?"
       :options="[
         { value: 'blanc', text: 'Blanc' },
@@ -80,7 +61,8 @@ function refresh(event: Event): void {
 
     <QuestionText
       id="chat"
-      v-model="chat"
+      v-model="correctAnswers[1]"
+      answer="4"
       text="Combien de pattes a un chat ?"
       placeholder="Veuillez saisir un nombre"
     />
@@ -89,7 +71,8 @@ function refresh(event: Event): void {
 
     <QuestionRadio
       id="capitale"
-      v-model="capitale"
+      v-model="correctAnswers[2]"
+      answer="Berne"
       text="Quelle est la capitale de la Suisse ?"
       :options="[
         { value: 'Geneve', text: 'Genève' },
@@ -112,6 +95,12 @@ function refresh(event: Event): void {
         { value: 'en France', text: 'en France' },
       ]"
     />
+
+    <br />
+    <br />
+
+    <div>Réponses correctes : {{ correctAnswers }}</div>
+    <div>Score : {{ score }} / {{ totalScore }}</div>
 
     <br />
     <br />

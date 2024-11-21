@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, defineProps, type PropType } from 'vue'
 
-const checkedNames = ref([])
+const checkedNames = ref<string[]>([]);
 const props = defineProps({
   id: { type: String, required: true },
   text: { type: String, required: true },

@@ -1,8 +1,8 @@
 ## Journal de bord
 
-Semaine 1
+<Semaine 1>
 
-| Tache     | Temps estimé | Temps passé | Commentaires |
+| Tâche     | Temps estimé | Temps passé | Commentaires |
 | --------- | ------------ | ----------- | ------------ |
 | Vue       | 15 minutes   | 10 minutes  |
 | Bootstrap | 30 minutes   | 20 minutes  |
@@ -23,7 +23,7 @@ Questions :
     - App.vue
         Il permet de générer un lien URL en local pour visualiser la page.
     - router/index.ts
-        C'est un fichier TypeScript. Il permet de ...
+        C'est un fichier TypeScript. Il permet de lier les chemins aux page vue.
     - AboutView.vue
         Il permet de définir l'onglet à propos qui donne les informations sur la page.
     - HomeView.vue
@@ -48,20 +48,102 @@ Je trouve frustrant de devoir à chaque fois tout réécrire, autant pour créer
 
 ---
 
-Semaine 2
+<Semaine 2>
 
-| Tache            | Temps estimé | Temps passé   | Commentaires |
-| ---------------- | ------------ | ------------- | ------------ |
-| QuestionRadio    | 40 minutes   | 25 minutes    |
-| QuestionText     | 30 minutes   | 45 minutes    |
-| API              | 40 minutes   | 20 minutes    |
-| QuestionCheckbox | 40 minutes   | 25 minutes    |
-| (BONUS)          |              | + 12h25 - ... |
-| Rapport          | 25 minutes   | minutes       |
+| Tâche            | Temps estimé | Temps passé | Commentaires |
+| ---------------- | ------------ | ----------- | ------------ |
+| QuestionRadio    | 40 minutes   | 25 minutes  |
+| QuestionText     | 30 minutes   | 45 minutes  |
+| API              | 40 minutes   | 20 minutes  |
+| QuestionCheckbox | 40 minutes   | 35 minutes  |
+| (BONUS)          |              | + ...       |
+| Rapport          | 25 minutes   | 15 minutes  |
+
+Difficultés :
+Je n'as pas eu de grande difficultée cette semaine.
+Peut-être une petite difficultée pour bien comprendre le fichier QuestionRadio pour être capable de re produire et addapter dans le QuestionText.
+
+Explications et réflexions sur le code :
+Questions :
+
+    - Comment rendre la propriété placeholder optionnelle ?
+        Le placeholder ne serait pas nécessaire si dans l'intitulé de la quesiton, on écrivait directement que la réponse est un nombre à entrer.
+
+Suite du projet :
+Est-ce que ce serait possible de rendre la création des questions encore plus simple ? D'avoir une sorte de formulaire général avec une boucle qui ferait qu'on n'a pas besoin de faire appel aux QuestionRadio et QuestionText à chaque fois que l'on veut crééer un question.
+
+---
+
+<Semaine 3>
+
+| Tâche    | Temps estimé | Temps passé | Commentaires |
+| -------- | ------------ | ----------- | ------------ |
+| Réponses | 1h           | 40 minutes  |
+| Score    | 40 minutes   | 20 minutes  |
+| Rapport  | 25 minutes   |             |
 
 Difficultés :
 
 Explications et réflexions sur le code :
-Questions : - Comment rendre la propriété placeholder optionnelle ?
+Questions : - À quoi sert l'option immediate: true dans le watch ? - Que se passe-t-il si on l'enlève ou si on met immediate: false ?
+
+Proposer une autre manière de calculer le score et comparer les deux méthodes.
+
+Suite du projet :
+
+---
+
+<Semaine 4>
+
+| Tâche   | Temps estimé | Temps passé | Commentaires |
+| ------- | ------------ | ----------- | ------------ |
+|         |              |             |
+|         |              |             |
+|         |              |             |
+|         |              |             |
+| Rapport |              |             |
+
+Difficultés :
+
+Explications et réflexions sur le code :
+Questions :
+
+Suite du projet :
+
+---
+
+<Semaine 5>
+
+| Tâche   | Temps estimé | Temps passé | Commentaires |
+| ------- | ------------ | ----------- | ------------ |
+|         |              |             |
+|         |              |             |
+|         |              |             |
+|         |              |             |
+| Rapport |              |             |
+
+Difficultés :
+
+Explications et réflexions sur le code :
+Questions :
+
+Suite du projet :
+
+---
+
+<Semaine 6>
+
+| Tâche   | Temps estimé | Temps passé | Commentaires |
+| ------- | ------------ | ----------- | ------------ |
+|         |              |             |
+|         |              |             |
+|         |              |             |
+|         |              |             |
+| Rapport |              |             |
+
+Difficultés :
+
+Explications et réflexions sur le code :
+Questions :
 
 Suite du projet :
