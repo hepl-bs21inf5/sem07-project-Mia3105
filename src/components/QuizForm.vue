@@ -3,42 +3,34 @@ import { computed, ref } from 'vue'
 import QuestionRadio from '@/components/QuestionRadio.vue'
 import QuestionText from '@/components/QuestionText.vue'
 import QuestionCheckbox from '@/components/QuestionCheckbox.vue'
+import { QuestionState } from '@/utils/models'
 
-const cheval = ref<string | null>(null)
-const chat = ref<string | null>(null)
-const capitale = ref<string | null>(null)
-const lausanne = ref<string[]>([])
-const correctAnswers = ref<boolean[]>([])
-const score = computed<number>(() => correctAnswers.value.filter((value) => value).length)
-const totalScore = computed<number>(() => correctAnswers.value.length)
+const questionStates = ref<QuestionState[]>([])
 
-const filled = computed<boolean>(
-  () =>
-    cheval.value !== null &&
-    chat.value !== null &&
-    capitale.value !== null &&
-    lausanne.value !== [],
+const filled = computed<boolean>(() =>
+  questionStates.value.every((state) => state === QuestionState.Fill),
 )
+
+const submitted = computed<boolean>(() =>
+  questionStates.value.every(
+    (state) => state === QuestionState.Correct || state === QuestionState.Wrong,
+  ),
+)
+
+const score = computed<number>(
+  () => questionStates.value.filter((state) => state === QuestionState.Correct).length,
+)
+
+const totalScore = computed<number>(() => questionStates.value.length)
 
 function submit(event: Event): void {
   event.preventDefault()
-
-  if (filled.value) {
-    alert(`
-    Vous avez choisi la couleur ${cheval.value}
-    Vous avez choisi ${chat.value}
-    Vous avez choisi la ville de ${capitale.value}
-    Vous avez choisi ${lausanne.value}
-    `)
-  }
+  questionStates.value = questionStates.value.map(() => QuestionState.Submit)
 }
 
-function refresh(event: Event): void {
+function reset(event: Event): void {
   event.preventDefault()
-  cheval.value = null
-  chat.value = null
-  capitale.value = null
-  lausanne.value = []
+  questionStates.value = questionStates.value.map(() => QuestionState.Empty)
 }
 </script>
 
@@ -46,7 +38,7 @@ function refresh(event: Event): void {
   <form>
     <QuestionRadio
       id="cheval"
-      v-model="correctAnswers[0]"
+      v-model="questionStates[0]"
       answer="blanc"
       text="De quelle couleur est le cheval blanc de Napoléon ?"
       :options="[
@@ -61,7 +53,7 @@ function refresh(event: Event): void {
 
     <QuestionText
       id="chat"
-      v-model="correctAnswers[1]"
+      v-model="questionStates[1]"
       answer="4"
       text="Combien de pattes a un chat ?"
       placeholder="Veuillez saisir un nombre"
@@ -69,9 +61,10 @@ function refresh(event: Event): void {
 
     <br />
 
+    
     <QuestionRadio
       id="capitale"
-      v-model="correctAnswers[2]"
+      v-model="questionStates[2]"
       answer="Berne"
       text="Quelle est la capitale de la Suisse ?"
       :options="[
@@ -86,8 +79,9 @@ function refresh(event: Event): void {
 
     <QuestionCheckbox
       id="lausanne"
-      v-model="lausanne"
+      v-model="questionStates[3]"
       text="Où se situe Lausanne ?"
+      answer="..."
       :options="[
         { value: 'Canton de Vaud', text: 'Canton de Vaud' },
         { value: 'en Suisse', text: 'en Suisse' },
@@ -99,16 +93,15 @@ function refresh(event: Event): void {
     <br />
     <br />
 
-    <div>Réponses correctes : {{ correctAnswers }}</div>
-    <div>Score : {{ score }} / {{ totalScore }}</div>
-
+    <div>Debug états : {{ questionStates }}</div>
+    <div v-if="submitted">Score : {{ score }} / {{ totalScore }}</div>
     <br />
     <br />
   </form>
 
   <form @submit="submit">
     <button class="btn btn-primary" :class="{ disabled: !filled }" type="submit">Terminer</button>
-    <button style="margin-left: 10em" class="btn btn-primary" button @:click="refresh">
+    <button style="margin-left: 10em" class="btn btn-primary" button @:click="reset">
       Réinitialiser
     </button>
   </form>

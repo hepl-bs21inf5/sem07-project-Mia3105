@@ -1,6 +1,6 @@
-## Journal de bord
+# Journal de bord
 
-<Semaine 1>
+## Semaine 1
 
 | Tâche     | Temps estimé | Temps passé | Commentaires |
 | --------- | ------------ | ----------- | ------------ |
@@ -48,20 +48,20 @@ Je trouve frustrant de devoir à chaque fois tout réécrire, autant pour créer
 
 ---
 
-<Semaine 2>
+## Semaine 2
 
-| Tâche            | Temps estimé | Temps passé | Commentaires |
-| ---------------- | ------------ | ----------- | ------------ |
+| Tâche            | Temps estimé | Temps passé | Commentaires                                                             |
+| ---------------- | ------------ | ----------- | ------------------------------------------------------------------------ |
 | QuestionRadio    | 40 minutes   | 25 minutes  |
 | QuestionText     | 30 minutes   | 45 minutes  |
 | API              | 40 minutes   | 20 minutes  |
-| QuestionCheckbox | 40 minutes   | 35 minutes  |
-| (BONUS)          |              | + ...       |
+| QuestionCheckbox | 40 minutes   | 35 minutes  | Le bouton Terminer et Réinitialiser ne fonctionnent pas                  |
+| (BONUS)          |              |             | (mais comme ils sont inhibés dans le semaine 3, je n'ai pas plus essayé) |
 | Rapport          | 25 minutes   | 15 minutes  |
 
 Difficultés :
 Je n'as pas eu de grande difficultée cette semaine.
-Peut-être une petite difficultée pour bien comprendre le fichier QuestionRadio pour être capable de re produire et addapter dans le QuestionText.
+Peut-être une petite difficultée pour bien comprendre le fichier QuestionRadio pour être capable de reproduire et adapter dans le QuestionText.
 
 Explications et réflexions sur le code :
 Questions :
@@ -74,26 +74,63 @@ Est-ce que ce serait possible de rendre la création des questions encore plus s
 
 ---
 
-<Semaine 3>
+## Semaine 3
 
-| Tâche    | Temps estimé | Temps passé | Commentaires |
-| -------- | ------------ | ----------- | ------------ |
-| Réponses | 1h           | 40 minutes  |
-| Score    | 40 minutes   | 20 minutes  |
-| Rapport  | 25 minutes   |             |
+| Tâche                         | Temps estimé | Temps passé | Commentaires |
+| ----------------------------- | ------------ | ----------- | ------------ |
+| Réponses                      | 1h           | 40 minutes  |
+| Score                         | 40 minutes   | 20 minutes  |
+| Appliqué aux QuestionCheckBox | -            | 20 minutes  |
+|                               |              | + ...       |
+| Rapport                       | 25 minutes   |             |
 
 Difficultés :
 
 Explications et réflexions sur le code :
-Questions : - À quoi sert l'option immediate: true dans le watch ? - Que se passe-t-il si on l'enlève ou si on met immediate: false ?
+Questions :
 
-Proposer une autre manière de calculer le score et comparer les deux méthodes.
+    - À quoi sert l'option immediate: true dans le watch ?
+        Elle sert à ce que l'obervateur ...... (à répondre)
+    - Que se passe-t-il si on l'enlève ou si on met immediate: false ?
+    ...... (à répondre)
+
+    - Proposer une autre manière de calculer le score et comparer les deux méthodes.
+    ...... (à répondre)
 
 Suite du projet :
+...... (à répondre)
 
 ---
 
-<Semaine 4>
+## Semaine 4
+
+| Tâche                         | Temps estimé | Temps passé | Commentaires |
+| ----------------------------- | ------------ | ----------- | ------------ |
+| État                          | 40 minutes   | 30 minutes  |
+| Boutons                       | 50 minutes   | 45 minutes  |
+| Réponses immuables            | 5 minutes    | 5 minutes   |
+| Appliqué aux QuestionCheckBox | -            | 10 minutes  |
+|                               |              | + ...       |
+| Rapport                       | 25 minutes   |             |
+
+Difficultés :
+
+Explications et réflexions sur le code :
+Questions :
+
+        - Comment pourrait-on réécrire la ligne suivante sans l'opérateur ternaire (avec des if et else) ?
+            model.value = value.value === props.answer ? QuestionState.Correct : QuestionState.Wrong;
+        ...... (à répondre)
+
+        - Comment pourrait-on réécrire autrement la logique du watch sur value ?
+        ...... (à répondre)
+
+Suite du projet :
+...... (à répondre)
+
+---
+
+## Semaine 5
 
 | Tâche   | Temps estimé | Temps passé | Commentaires |
 | ------- | ------------ | ----------- | ------------ |
@@ -112,26 +149,7 @@ Suite du projet :
 
 ---
 
-<Semaine 5>
-
-| Tâche   | Temps estimé | Temps passé | Commentaires |
-| ------- | ------------ | ----------- | ------------ |
-|         |              |             |
-|         |              |             |
-|         |              |             |
-|         |              |             |
-| Rapport |              |             |
-
-Difficultés :
-
-Explications et réflexions sur le code :
-Questions :
-
-Suite du projet :
-
----
-
-<Semaine 6>
+## Semaine 6
 
 | Tâche   | Temps estimé | Temps passé | Commentaires |
 | ------- | ------------ | ----------- | ------------ |
