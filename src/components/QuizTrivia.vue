@@ -7,9 +7,10 @@
       question: string;
       correct_answer: string;
       incorrect_answers: string[];
+      answer: string ;
     }[]
   >([]);
-  // const answers = reactive<{ [key: number]: string | null }>({});
+  const answers = reactive<{ [key: number]: string | null }>({});
 
   fetch("https://opentdb.com/api.php?amount=10&type=multiple")
     .then((response) => response.json())
@@ -22,7 +23,7 @@
       v-for="(question, index) in questions"
       :id="index.toString()"
       :key="index"
-      answer="question.answer"
+      :answer="question.answer"
       :text="question.question"
       :options="[
         { value: question.correct_answer, text: question.correct_answer },
@@ -32,5 +33,6 @@
         })),
       ]"
     />
+
   </form>
 </template>
