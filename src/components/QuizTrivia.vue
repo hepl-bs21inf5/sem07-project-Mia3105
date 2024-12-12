@@ -9,7 +9,7 @@
       incorrect_answers: string[];
     }[]
   >([]);
-  const answers = reactive<{ [key: number]: string | null }>({});
+  // const answers = reactive<{ [key: number]: string | null }>({});
 
   fetch("https://opentdb.com/api.php?amount=10&type=multiple")
     .then((response) => response.json())
