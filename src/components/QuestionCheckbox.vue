@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { ref, defineProps, type PropType, watch } from 'vue'
-import type { QuestionState } from '@/utils/models';
+import { QuestionState } from '@/utils/models';
 
 const checkedNames = ref<QuestionState>();
 const props = defineProps({
   id: { type: String, required: true },
   text: { type: String, required: true },
-  answer: { type: Array<string>, required: true },
+  answer: { type: Array as PropType<Array<string>>, required: true },
   options: {
     type: Array as PropType<Array<{ value: string; text: string }>>,
     required: true,
@@ -19,7 +19,7 @@ const props = defineProps({
   watch(checkedNames, (newModel) => {
   if (newModel === QuestionState.Submit) {
     checkedNames.value = value.value === props.answer ? QuestionState.Correct : QuestionState.Wrong
-  } else if (newModel === QuestionState.Empty) {
+  } else if (newModel === QuestionState.Vide) {
     value.value = []
   }
 })

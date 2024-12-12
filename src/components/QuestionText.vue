@@ -9,6 +9,7 @@ const props = defineProps({
   text: { type: String, required: true },
   answer: { type: String, required: true },
   placeholder: { type: String, required: true },
+  answerDetail: { type: String, default: ""}
 })
 
 
@@ -20,7 +21,7 @@ watch(
   (newModel) => {
     if (newModel === QuestionState.Submit) {
       reponse.value = value.value === props.answer ? QuestionState.Correct : QuestionState.Wrong
-    } else if (newModel === QuestionState.Empty) {
+    } else if (newModel === QuestionState.Vide) {
       value.value = null
     }
   },
@@ -31,7 +32,7 @@ watch(
   value,
   (newValue) => {
     if (newValue === null) {
-      reponse.value = QuestionState.Empty
+      reponse.value = QuestionState.Vide
     } else {
       reponse.value = QuestionState.Fill
     }
@@ -52,10 +53,27 @@ watch(
     :name="props.id"
     :placeholder="props.placeholder"
     :disabled="
-        model === QuestionState.Submit ||
-        model === QuestionState.Correct ||
-        model === QuestionState.Wrong
+        reponse === QuestionState.Submit ||
+        reponse === QuestionState.Correct ||
+        reponse === QuestionState.Wrong
         "
 
   />
+  <div
+    v-if="reponse === QuestionState.Correct || reponse === QuestionState.Wrong"
+  >
+    <p v-if="reponse === QuestionState.Correct" class="text-success">Juste !</p>
+    <p v-else class="text-danger">
+      Faux ! La réponse était : {{ answer }}
+    </p>
+    <p class="blockquote-footer">{{ props.answerDetail }}</p>
+  </div>
 </template>
+<style scoped>
+  .text-danger {
+    color: rgb(255, 146, 4) !important;
+  }
+  .text-success {
+    color: rgb(0, 215, 47) !important;
+  }
+</style>

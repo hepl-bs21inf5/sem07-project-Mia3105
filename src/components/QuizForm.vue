@@ -30,79 +30,91 @@ function submit(event: Event): void {
 
 function reset(event: Event): void {
   event.preventDefault()
-  questionStates.value = questionStates.value.map(() => QuestionState.Empty)
+  questionStates.value = questionStates.value.map(() => QuestionState.Vide)
 }
 </script>
 
 <template>
-  <form>
-    <QuestionRadio
-      id="cheval"
-      v-model="questionStates[0]"
-      answer="blanc"
-      text="De quelle couleur est le cheval blanc de Napoléon ?"
-      :options="[
-        { value: 'blanc', text: 'Blanc' },
-        { value: 'brun', text: 'Brun' },
-        { value: 'noir', text: 'Noir' },
-        { value: 'rouge', text: 'Rouge' },
-      ]"
-    />
-
-    <br />
-
-    <QuestionText
-      id="chat"
-      v-model="questionStates[1]"
-      answer="4"
-      text="Combien de pattes a un chat ?"
-      placeholder="Veuillez saisir un nombre"
-    />
-
-    <br />
-
-    
-    <QuestionRadio
-      id="capitale"
-      v-model="questionStates[2]"
-      answer="Berne"
-      text="Quelle est la capitale de la Suisse ?"
-      :options="[
-        { value: 'Geneve', text: 'Genève' },
-        { value: 'Lausanne', text: 'Lausanne' },
-        { value: 'Berne', text: 'Berne' },
-        { value: 'Zurich', text: 'Zurich' },
-      ]"
-    />
-
-    <br />
-
-    <QuestionCheckbox
-      id="lausanne"
-      v-model="questionStates[3]"
-      text="Où se situe Lausanne ?"
-      answer="..."
-      :options="[
-        { value: 'Canton de Vaud', text: 'Canton de Vaud' },
-        { value: 'en Suisse', text: 'en Suisse' },
-        { value: 'Canton du Valais', text: 'Canton du Valais' },
-        { value: 'en France', text: 'en France' },
-      ]"
-    />
-
-    <br />
-    <br />
-
-    <div>Debug états : {{ questionStates }}</div>
-    <div v-if="submitted">Score : {{ score }} / {{ totalScore }}</div>
-    <br />
-    <br />
-  </form>
-
   <form @submit="submit">
-    <button class="btn btn-primary" :class="{ disabled: !filled }" type="submit">Terminer</button>
-    <button style="margin-left: 10em" class="btn btn-primary" button @:click="reset">
-      Réinitialiser
-    </button>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <QuestionRadio
+            id="pi"
+            v-model="questionStates[0]"
+            answer="3.1415926535"
+            text="Quelles sont les 10 premières décimales de π ?"
+            :options="[
+              { value: '3.1514131211', text: '3.1514131211' },
+              { value: '3.1415926535', text: '3.1415926535' },
+              { value: '3.1415996633', text: '3.1415996633' },
+              { value: '1.1415926535', text: '1.1415926535' },
+            ]"
+            answer-detail="Que (3) j' (1) aime (4) à (1) faire (5) apprendre (9) ce (2) nombre (6) utile (5) aux (3) sages (5)."
+          />
+
+          <br />
+
+          <QuestionText
+            id="planète"
+            v-model="questionStates[1]"
+            answer="8"
+            text="Combien y a-t-il de planètes dans le système solaire ?"
+            placeholder="Veuillez saisir un nombre"
+            answer-detail="Les 8 planètes sont Mercure, Venus, Terre, Mars, Jupiter, Saturne, Uranus, Neptune. Pluton n'est plus considéré comme une planète."
+          />
+
+          <br />
+
+          <QuestionRadio
+            id="theoreme"
+            v-model="questionStates[2]"
+            answer="Théorème de Pythogore"
+            text="Quel théorème est utilisé uniquement dans les triangles rectangles ?"
+            :options="[
+              { value: 'Thalès', text: 'Théorème de Thalès' },
+              { value: 'gendarme', text: 'Théorème des deux gendarmes' },
+              { value: 'Pythagore', text: 'Théorème de Pythagore' },
+              { value: 'Cauchy', text: 'Théorème de Cauchy' },
+            ]"
+            answer-detail="Le théorème de Pythagore permet de faire un lien entre les angles et les longueurs dans un triangle rectangle."
+          />
+
+          <br />
+
+          <QuestionCheckbox
+            id="lausanne"
+            v-model="questionStates[3]"
+            text="Où se situe Lausanne ?"
+            :answer="['Canton de Vaud', 'en Suisse']"
+            :options="[
+              { value: 'Canton de Vaud', text: 'Canton de Vaud' },
+              { value: 'en Suisse', text: 'en Suisse' },
+              { value: 'Canton du Valais', text: 'Canton du Valais' },
+              { value: 'en France', text: 'en France' },
+            ]"
+          />
+
+          <br />
+          <br />
+          <button class="btn btn-primary" :class="{ disabled: !filled }" type="submit">
+            Terminer
+          </button>
+        </div>
+
+        <div class="col">
+          <div> États des questions : {{ questionStates }}</div>
+          <div v-if="submitted">Score : {{ score }} / {{ totalScore }}</div>
+          <br />
+          <br />
+
+          <br />
+          <br />
+          <div style="text-align: right">
+            <button class="btn btn-primary" button @:click="reset">Réinitialiser</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </form>
 </template>

@@ -2,12 +2,12 @@
 
 ## Semaine 1
 
-| Tâche     | Temps estimé | Temps passé | Commentaires |
-| --------- | ------------ | ----------- | ------------ |
-| Vue       | 15 minutes   | 10 minutes  |
-| Bootstrap | 30 minutes   | 20 minutes  |
-| Quiz      | 1h           | 2h20        |
-| Rapport   | 20 minutes   | 25 minutes  |
+| Tâche     | Temps estimé | Temps passé | Commentaires                      |
+| --------- | ------------ | ----------- | --------------------------------- |
+| Vue       | 15 minutes   | 10 minutes  |                                   |
+| Bootstrap | 30 minutes   | 20 minutes  |                                   |
+| Quiz      | 1h           | 2h20        | Pour lancer le lien : npm run dev |
+| Rapport   | 20 minutes   | 25 minutes  |                                   |
 
 Difficultés :
 Dans un premier temps, j'ai trouvé assez difficile de faire le compteur de score et de faire le bouton Réinitialiser. J'ai encore un problème, car si toutes les questions sont complétées, le bouton pour réinitialiser fonctionne une première fois comme le bouton Temriner et ensuite en appuyant une deuxième fois, il réinitialise.
@@ -52,12 +52,12 @@ Je trouve frustrant de devoir à chaque fois tout réécrire, autant pour créer
 
 | Tâche            | Temps estimé | Temps passé | Commentaires                                                             |
 | ---------------- | ------------ | ----------- | ------------------------------------------------------------------------ |
-| QuestionRadio    | 40 minutes   | 25 minutes  |
-| QuestionText     | 30 minutes   | 45 minutes  |
-| API              | 40 minutes   | 20 minutes  |
+| QuestionRadio    | 40 minutes   | 25 minutes  |                                                                          |
+| QuestionText     | 30 minutes   | 45 minutes  |                                                                          |
+| API              | 40 minutes   | 20 minutes  |                                                                          |
 | QuestionCheckbox | 40 minutes   | 35 minutes  | Le bouton Terminer et Réinitialiser ne fonctionnent pas                  |
 | (BONUS)          |              |             | (mais comme ils sont inhibés dans le semaine 3, je n'ai pas plus essayé) |
-| Rapport          | 25 minutes   | 15 minutes  |
+| Rapport          | 25 minutes   | 15 minutes  |                                                                          |
 
 Difficultés :
 Je n'as pas eu de grande difficultée cette semaine.
@@ -78,27 +78,29 @@ Est-ce que ce serait possible de rendre la création des questions encore plus s
 
 | Tâche                         | Temps estimé | Temps passé | Commentaires |
 | ----------------------------- | ------------ | ----------- | ------------ |
-| Réponses                      | 1h           | 40 minutes  |
-| Score                         | 40 minutes   | 20 minutes  |
-| Appliqué aux QuestionCheckBox | -            | 20 minutes  |
-|                               |              | + ...       |
-| Rapport                       | 25 minutes   |             |
+| Réponses                      | 1h           | 40 minutes  |              |
+| Score                         | 40 minutes   | 20 minutes  |              |
+| Appliqué aux QuestionCheckBox | -            | 20 minutes  |              |
+|                               |              | + ...       |              |
+| Rapport                       | 25 minutes   |             |              |
 
 Difficultés :
+J'ai eu un peu de mal à bien comprendre le watch.
 
 Explications et réflexions sur le code :
 Questions :
 
     - À quoi sert l'option immediate: true dans le watch ?
-        Elle sert à ce que l'obervateur ...... (à répondre)
+        Un watch permet de récupérer les données à chaque fois qu'il y a un changement. Avec l'option immediate:true, le watch récupère une première fois les données lorsqu'il est créé, sans attendre qu'il y ait de changements. Il fonctionne ensuite normalement en récupérant les données à chaque prochain changement.
+
     - Que se passe-t-il si on l'enlève ou si on met immediate: false ?
-    ...... (à répondre)
+        Si on ne met pas l'option, alors la première fois que les données seront récupérées sera au premier changement et pas avant.
 
     - Proposer une autre manière de calculer le score et comparer les deux méthodes.
-    ...... (à répondre)
+        const score = computed<number>(() =>)
 
 Suite du projet :
-...... (à répondre)
+La suite directe serait de refaire fonctionner les deux boutons.
 
 ---
 
@@ -106,12 +108,12 @@ Suite du projet :
 
 | Tâche                         | Temps estimé | Temps passé | Commentaires |
 | ----------------------------- | ------------ | ----------- | ------------ |
-| État                          | 40 minutes   | 30 minutes  |
-| Boutons                       | 50 minutes   | 45 minutes  |
-| Réponses immuables            | 5 minutes    | 5 minutes   |
-| Appliqué aux QuestionCheckBox | -            | 10 minutes  |
-|                               |              | + ...       |
-| Rapport                       | 25 minutes   |             |
+| État                          | 40 minutes   | 30 minutes  |              |
+| Boutons                       | 50 minutes   | 45 minutes  |              |
+| Réponses immuables            | 5 minutes    | 5 minutes   |              |
+| Appliqué aux QuestionCheckBox | -            | 10 minutes  |              |
+|                               |              | + ...       |              |
+| Rapport                       | 25 minutes   |             |              |
 
 Difficultés :
 
@@ -132,13 +134,13 @@ Suite du projet :
 
 ## Semaine 5
 
-| Tâche   | Temps estimé | Temps passé | Commentaires |
-| ------- | ------------ | ----------- | ------------ |
-|         |              |             |
-|         |              |             |
-|         |              |             |
-|         |              |             |
-| Rapport |              |             |
+| Tâche             | Temps estimé | Temps passé | Commentaires |
+| ----------------- | ------------ | ----------- | ------------ |
+| Réponse détaillée | 20 minutes   | 20 minutes  |              |
+| Style             | 20 minutes   | 10 minutes  |              |
+| Amélioration      | ...          |             |              |
+|                   |              |             |              |
+| Rapport           | 40 minutes   |             |              |
 
 Difficultés :
 
@@ -153,11 +155,11 @@ Suite du projet :
 
 | Tâche   | Temps estimé | Temps passé | Commentaires |
 | ------- | ------------ | ----------- | ------------ |
-|         |              |             |
-|         |              |             |
-|         |              |             |
-|         |              |             |
-| Rapport |              |             |
+|         |              |             |              |
+|         |              |             |              |
+|         |              |             |              |
+|         |              |             |              |
+| Rapport |              |             |              |
 
 Difficultés :
 
