@@ -28,9 +28,9 @@ watch(
   value,
   (newValue) => {
     if (newValue === null) {
-      checkedNames.value = QuestionState.Empty
+      checkedNames.value = QuestionState.Vide
     } else {
-      checkedNames.value = QuestionState.Fill
+      checkedNames.value = QuestionState.Remplie
     }
   },
   { immediate: true },

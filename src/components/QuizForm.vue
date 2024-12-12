@@ -8,7 +8,7 @@ import { QuestionState } from '@/utils/models'
 const questionStates = ref<QuestionState[]>([])
 
 const filled = computed<boolean>(() =>
-  questionStates.value.every((state) => state === QuestionState.Fill),
+  questionStates.value.every((state) => state === QuestionState.Remplie),
 )
 
 const submitted = computed<boolean>(() =>
@@ -69,13 +69,13 @@ function reset(event: Event): void {
           <QuestionRadio
             id="theoreme"
             v-model="questionStates[2]"
-            answer="Théorème de Pythogore"
+            answer="Théorème de Pythagore"
             text="Quel théorème est utilisé uniquement dans les triangles rectangles ?"
             :options="[
-              { value: 'Thalès', text: 'Théorème de Thalès' },
-              { value: 'gendarme', text: 'Théorème des deux gendarmes' },
-              { value: 'Pythagore', text: 'Théorème de Pythagore' },
-              { value: 'Cauchy', text: 'Théorème de Cauchy' },
+              { value: 'Théorème de Thalès', text: 'Théorème de Thalès' },
+              { value: 'Théorème des deux gendarmes', text: 'Théorème des deux gendarmes' },
+              { value: 'Théorème de Pythagore', text: 'Théorème de Pythagore' },
+              { value: 'Théorème de Cauchy', text: 'Théorème de Cauchy' },
             ]"
             answer-detail="Le théorème de Pythagore permet de faire un lien entre les angles et les longueurs dans un triangle rectangle."
           />

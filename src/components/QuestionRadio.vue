@@ -31,7 +31,7 @@ watch(
     if (newValue === null) {
       model.value = QuestionState.Vide
     } else {
-      model.value = QuestionState.Fill
+      model.value = QuestionState.Remplie
     }
   },
   { immediate: true },
