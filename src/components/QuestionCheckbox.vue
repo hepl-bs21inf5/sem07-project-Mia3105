@@ -19,7 +19,7 @@ const props = defineProps({
   watch(checkedNames, (newModel) => {
   if (newModel === QuestionState.Submit) {
     checkedNames.value = value.value === props.answer ? QuestionState.Correct : QuestionState.Wrong
-  } else if (newModel === QuestionState.Vide) {
+  } else if (newModel === QuestionState.Empty) {
     value.value = []
   }
 })
@@ -28,9 +28,9 @@ watch(
   value,
   (newValue) => {
     if (newValue === null) {
-      checkedNames.value = QuestionState.Vide
+      checkedNames.value = QuestionState.Empty
     } else {
-      checkedNames.value = QuestionState.Remplie
+      checkedNames.value = QuestionState.Fill
     }
   },
   { immediate: true },

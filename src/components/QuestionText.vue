@@ -21,7 +21,7 @@ watch(
   (newModel) => {
     if (newModel === QuestionState.Submit) {
       reponse.value = value.value === props.answer ? QuestionState.Correct : QuestionState.Wrong
-    } else if (newModel === QuestionState.Vide) {
+    } else if (newModel === QuestionState.Empty) {
       value.value = null
     }
   },
@@ -32,9 +32,9 @@ watch(
   value,
   (newValue) => {
     if (newValue === null) {
-      reponse.value = QuestionState.Vide
+      reponse.value = QuestionState.Empty
     } else {
-      reponse.value = QuestionState.Remplie
+      reponse.value = QuestionState.Fill
     }
   },
   { immediate: true },

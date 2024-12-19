@@ -20,7 +20,7 @@ const value = ref<string | null>(null)
 watch(model, (newModel) => {
   if (newModel === QuestionState.Submit) {
     model.value = value.value === props.answer ? QuestionState.Correct : QuestionState.Wrong
-  } else if (newModel === QuestionState.Vide) {
+  } else if (newModel === QuestionState.Empty) {
     value.value = null
   }
 })
@@ -29,9 +29,9 @@ watch(
   value,
   (newValue) => {
     if (newValue === null) {
-      model.value = QuestionState.Vide
+      model.value = QuestionState.Empty
     } else {
-      model.value = QuestionState.Remplie
+      model.value = QuestionState.Fill
     }
   },
   { immediate: true },

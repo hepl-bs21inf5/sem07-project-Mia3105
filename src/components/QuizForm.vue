@@ -8,7 +8,7 @@ import { QuestionState } from '@/utils/models'
 const questionStates = ref<QuestionState[]>([])
 
 const filled = computed<boolean>(() =>
-  questionStates.value.every((state) => state === QuestionState.Remplie),
+  questionStates.value.every((state) => state === QuestionState.Fill),
 )
 
 const submitted = computed<boolean>(() =>
@@ -23,111 +23,128 @@ const score = computed<number>(
 
 const totalScore = computed<number>(() => questionStates.value.length)
 
+const radioOptions1 = ref(
+  shuffleArray([
+    { value: '3.1514131211', text: '3.1514131211' },
+    { value: '3.1415926535', text: '3.1415926535' },
+    { value: '3.1415996633', text: '3.1415996633' },
+    { value: '1.1415926535', text: '1.1415926535' },
+  ]),
+)
+
+const radioOptions2 = ref(
+  shuffleArray([
+    { value: 'Théorème de Thalès', text: 'Théorème de Thalès' },
+    { value: 'Théorème des deux gendarmes', text: 'Théorème des deux gendarmes' },
+    { value: 'Théorème de Pythagore', text: 'Théorème de Pythagore' },
+    { value: 'Théorème de Cauchy', text: 'Théorème de Cauchy' },
+  ]),
+)
+
 function submit(event: Event): void {
   event.preventDefault()
   questionStates.value = questionStates.value.map(() => QuestionState.Submit)
-  document.body.scrollTop = 0;
-  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0
+  document.documentElement.scrollTop = 0
 }
 
 function reset(event: Event): void {
   event.preventDefault()
-  questionStates.value = questionStates.value.map(() => QuestionState.Vide)
-  document.body.scrollTop = 0;
-  document.documentElement.scrollTop = 0;
+  questionStates.value = questionStates.value.map(() => QuestionState.Empty)
+  document.body.scrollTop = 0
+  document.documentElement.scrollTop = 0
+  radioOptions1.value = shuffleArray(radioOptions1.value)
+  radioOptions2.value = shuffleArray(radioOptions2.value)
 }
 
-
+function shuffleArray<T>(array: T[]): T[] {
+  const shuffled = [...array]
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
+  }
+  return shuffled
+}
 </script>
 
 <template>
   <form @submit="submit">
     <br />
-          <QuestionRadio
-            id="pi"
-            v-model="questionStates[0]"
-            answer="3.1415926535"
-            text="1. Quelles sont les 10 premières décimales de π ?"
-            :options="[
-              { value: '3.1514131211', text: '3.1514131211' },
-              { value: '3.1415926535', text: '3.1415926535' },
-              { value: '3.1415996633', text: '3.1415996633' },
-              { value: '1.1415926535', text: '1.1415926535' },
-            ]"
-            answer-detail="Que (3) j' (1) aime (4) à (1) faire (5) apprendre (9) ce (2) nombre (6) utile (5) aux (3) sages (5)."
-          />
+    <div v-if="submitted">Score : {{ score }} / {{ totalScore }}</div>
+    <br />
+    <QuestionRadio
+      id="pi"
+      v-model="questionStates[0]"
+      answer="3.1415926535"
+      text="1. Quelles sont les 10 premières décimales de π ?"
+      :options="radioOptions1"
+      answer-detail="Que (3) j' (1) aime (4) à (1) faire (5) apprendre (9) ce (2) nombre (6) utile (5) aux (3) sages (5)."
+    />
 
-          <br />
+    <br />
 
-          <QuestionText
-            id="planète"
-            v-model="questionStates[1]"
-            answer="8"
-            text="2. Combien y a-t-il de planètes dans le système solaire ?"
-            placeholder="Veuillez saisir un nombre"
-            answer-detail="Les 8 planètes sont Mercure, Venus, Terre, Mars, Jupiter, Saturne, Uranus, Neptune. Pluton n'est plus considérée comme une planète."
-          />
+    <QuestionText
+      id="planète"
+      v-model="questionStates[1]"
+      answer="8"
+      text="2. Combien y a-t-il de planètes dans le système solaire ?"
+      placeholder="Veuillez saisir un nombre"
+      answer-detail="Les 8 planètes sont Mercure, Venus, Terre, Mars, Jupiter, Saturne, Uranus, Neptune. Pluton n'est plus considérée comme une planète."
+    />
 
-          <br />
+    <br />
 
-            <QuestionRadio
-              id="theoreme"
-              v-model="questionStates[2]"
-              answer="Théorème de Pythagore"
-              text="3. Quel théorème est utilisé uniquement dans les triangles rectangles ?"
-              :options="[
-                { value: 'Théorème de Thalès', text: 'Théorème de Thalès' },
-                { value: 'Théorème des deux gendarmes', text: 'Théorème des deux gendarmes' },
-                { value: 'Théorème de Pythagore', text: 'Théorème de Pythagore' },
-                { value: 'Théorème de Cauchy', text: 'Théorème de Cauchy' },
-              ]"
-              answer-detail="Le théorème de Pythagore permet de faire un lien entre les angles et les longueurs dans un triangle rectangle."
-            />
+    <QuestionRadio
+      id="theoreme"
+      v-model="questionStates[2]"
+      answer="Théorème de Pythagore"
+      text="3. Quel théorème est utilisé uniquement dans les triangles rectangles ?"
+      :options="radioOptions2"
+      answer-detail="Le théorème de Pythagore permet de faire un lien entre les angles et les longueurs dans un triangle rectangle."
+    />
 
-            <br />
+    <br />
 
-            <QuestionCheckbox
-              id="lausanne"
-              v-model="questionStates[3]"
-              text="4. Où se situe Lausanne ?"
-              :answer="['Canton de Vaud', 'en Suisse']"
-              :options="[
-                { value: 'Canton de Vaud', text: 'Canton de Vaud' },
-                { value: 'en Suisse', text: 'en Suisse' },
-                { value: 'Canton du Valais', text: 'Canton du Valais' },
-                { value: 'en France', text: 'en France' },
-              ]"
-            />
-            <br /><br />
-        <p
-          style="
-            position: fixed;
-            top: 85px;
-            left: 0;
-            width: 100%;
-            background: none;
-            margin: 0;
-            text-align: right;
-            padding: 10px;
-          "
-        >
-          États des questions :
-          <br />{{ questionStates }}
-        </p>
+    <QuestionCheckbox
+      id="lausanne"
+      v-model="questionStates[3]"
+      text="4. Où se situe Lausanne ?"
+      :answer="['Canton de Vaud', 'en Suisse']"
+      :options="[
+        { value: 'Canton de Vaud', text: 'Canton de Vaud' },
+        { value: 'en Suisse', text: 'en Suisse' },
+        { value: 'Canton du Valais', text: 'Canton du Valais' },
+        { value: 'en France', text: 'en France' },
+      ]"
+    />
+    <br /><br />
+    <p
+      style="
+        position: fixed;
+        top: 85px;
+        left: 80%;
+        width: 250px;
+        background: white;
+        text-align: left;
+        padding: 10px;
+        border: 1px solid rgb(241, 241, 241);
+        box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px;
+        line-height: 20px;
+        margin: 10px;
+        outline: 0px;
+      "
+    >
+      États des questions :
+      <br />{{ questionStates }}
+    </p>
 
-        <div v-if="submitted">Score : {{ score }} / {{ totalScore }}</div>
-        <br />
-        <br />
-        <div style="text-align: left">
-          <button class="btn btn-primary" :class="{ disabled: !filled }" type="submit">
-            Terminer
-          </button>
-        </div>
+    <div style="text-align: left">
+      <button class="btn btn-primary" :class="{ disabled: !filled }" type="submit">Terminer</button>
+    </div>
 
-      <div style="text-align: right">
-        <button class="btn btn-primary" button @:click="reset">Réinitialiser</button>
-      </div>
-      <br />
-
+    <div style="text-align: right">
+      <button class="btn btn-primary" button @:click="reset">Réinitialiser</button>
+    </div>
+    <br />
   </form>
 </template>
