@@ -73,10 +73,27 @@ function shuffleArray<T>(array: T[]): T[] {
     <div v-if="submitted">Score : {{ score }} / {{ totalScore }}</div>
     <br />
     <QuestionRadio
-      id="pi"
+      id="jour"
       v-model="questionStates[0]"
+      answer="a"
+      text="1. Quelle est la première lettre de l'alphabet ?"
+      :options="[
+        { value: 'a', text: 'a' },
+        { value: 'e', text: 'e' },
+        { value: 'i', text: 'i' },
+        { value: 'o', text: 'o' },
+        { value: 'u', text: 'u' },
+        { value: 'y', text: 'y' },
+      ]"
+      answer-detail="C'est a."
+    />
+
+    <br />
+    <QuestionRadio
+      id="pi"
+      v-model="questionStates[1]"
       answer="3.1415926535"
-      text="1. Quelles sont les 10 premières décimales de π ?"
+      text="2. Quelles sont les 10 premières décimales de π ?"
       :options="radioOptions1"
       answer-detail="Que (3) j' (1) aime (4) à (1) faire (5) apprendre (9) ce (2) nombre (6) utile (5) aux (3) sages (5)."
     />
@@ -85,9 +102,9 @@ function shuffleArray<T>(array: T[]): T[] {
 
     <QuestionText
       id="planète"
-      v-model="questionStates[1]"
+      v-model="questionStates[2]"
       answer="8"
-      text="2. Combien y a-t-il de planètes dans le système solaire ?"
+      text="3. Combien y a-t-il de planètes dans le système solaire ?"
       placeholder="Veuillez saisir un nombre"
       answer-detail="Les 8 planètes sont Mercure, Venus, Terre, Mars, Jupiter, Saturne, Uranus, Neptune. Pluton n'est plus considérée comme une planète."
     />
@@ -96,9 +113,9 @@ function shuffleArray<T>(array: T[]): T[] {
 
     <QuestionRadio
       id="theoreme"
-      v-model="questionStates[2]"
+      v-model="questionStates[3]"
       answer="Théorème de Pythagore"
-      text="3. Quel théorème est utilisé uniquement dans les triangles rectangles ?"
+      text="4. Quel théorème est utilisé uniquement dans les triangles rectangles ?"
       :options="radioOptions2"
       answer-detail="Le théorème de Pythagore permet de faire un lien entre les angles et les longueurs dans un triangle rectangle."
     />
@@ -107,8 +124,8 @@ function shuffleArray<T>(array: T[]): T[] {
 
     <QuestionCheckbox
       id="lausanne"
-      v-model="questionStates[3]"
-      text="4. Où se situe Lausanne ?"
+      v-model="questionStates[4]"
+      text="5. Où se situe Lausanne ?"
       :answer="['Canton de Vaud', 'en Suisse']"
       :options="[
         { value: 'Canton de Vaud', text: 'Canton de Vaud' },
