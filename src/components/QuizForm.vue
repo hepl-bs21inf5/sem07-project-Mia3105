@@ -4,6 +4,7 @@ import QuestionRadio from '@/components/QuestionRadio.vue'
 import QuestionText from '@/components/QuestionText.vue'
 import QuestionCheckbox from '@/components/QuestionCheckbox.vue'
 import { QuestionState } from '@/utils/models'
+import QuestionSelect from './QuestionSelect.vue'
 
 const questionStates = ref<QuestionState[]>([])
 
@@ -72,11 +73,12 @@ function shuffleArray<T>(array: T[]): T[] {
     <br />
     <div v-if="submitted">Score : {{ score }} / {{ totalScore }}</div>
     <br />
-    <QuestionRadio
+    <QuestionSelect
       id="jour"
       v-model="questionStates[0]"
       answer="a"
       text="1. Quelle est la première lettre de l'alphabet ?"
+      placeholder="Veuillez choisir une option"
       :options="[
         { value: 'a', text: 'a' },
         { value: 'e', text: 'e' },
@@ -122,24 +124,13 @@ function shuffleArray<T>(array: T[]): T[] {
 
     <br />
 
-    <QuestionCheckbox
-      id="lausanne"
-      v-model="questionStates[4]"
-      text="5. Où se situe Lausanne ?"
-      :answer="['Canton de Vaud', 'en Suisse']"
-      :options="[
-        { value: 'Canton de Vaud', text: 'Canton de Vaud' },
-        { value: 'en Suisse', text: 'en Suisse' },
-        { value: 'Canton du Valais', text: 'Canton du Valais' },
-        { value: 'en France', text: 'en France' },
-      ]"
-    />
+
     <br /><br />
     <p
       style="
         position: fixed;
         top: 85px;
-        left: 80%;
+        right: 0px;
         width: 250px;
         background: white;
         text-align: left;
@@ -152,7 +143,8 @@ function shuffleArray<T>(array: T[]): T[] {
       "
     >
       États des questions :
-      <br />{{ questionStates }}
+      <br />
+      {{ questionStates }}
     </p>
 
     <div style="text-align: left">
