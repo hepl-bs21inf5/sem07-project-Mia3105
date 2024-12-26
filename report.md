@@ -183,10 +183,10 @@ La suite directe serait de refaire fonctionner les deux boutons.
 
   - _Ajouter ce computed dans QuestionRadio.vue :_
 
-          const answerText = computed<string>(() =>
-          props.options.find((option) => option.value === props.answer)?.text ??
-          props.answer,
-          );
+    `const answerText = computed<string>(() =>
+    props.options.find((option) => option.value === props.answer)?.text ??
+    props.answer,
+    ); `
 
     _Remplacer {{ props.answer }} par {{ answerText }} dans le template._
     _Expliquer pourquoi on a fait ce changement ainsi que le code du computed._
@@ -203,17 +203,18 @@ La suite directe serait de refaire fonctionner les deux boutons.
 
 ## Semaine 6
 
-| Tâche   | Temps estimé | Temps passé | Commentaires |
-| ------- | ------------ | ----------- | ------------ |
-|         |              |             |              |
-|         |              |             |              |
-|         |              |             |              |
-|         |              |             |              |
-| Rapport |              |             |              |
+| Tâche       | Temps estimé | Temps passé | Commentaires                                |
+| ----------- | ------------ | ----------- | ------------------------------------------- |
+| Déploiement | 10 minutes   | 30 minutes  | J'ai rencontré des problèmes avec le Trivia |
+|             |              |             |                                             |
+|             |              |             |                                             |
+|             |              |             |                                             |
+| Rapport     |              |             |                                             |
 
 **Lien :** https://hepl-bs21inf5.github.io/sem07-project-Mia3105/
 
 **Difficultés :**
+J'ai rencontré des problèmes avec le QuizTrivia. Il avait été fait en fonction de QuestionRadio et comme entre temps ce fichier a été modifié, il a fallu modifier QuizTrivia en conséquence.
 
 **Explications et réflexions sur le code :**
 
