@@ -183,15 +183,16 @@ La suite directe serait de refaire fonctionner les deux boutons.
 
   - _Ajouter ce computed dans QuestionRadio.vue :_
 
-    `const answerText = computed<string>(() =>
+        `const answerText = computed<string>(() =>
+
     props.options.find((option) => option.value === props.answer)?.text ??
     props.answer,
     ); `
 
-    _Remplacer {{ props.answer }} par {{ answerText }} dans le template._
-    _Expliquer pourquoi on a fait ce changement ainsi que le code du computed._
+        _Remplacer {{ props.answer }} par {{ answerText }} dans le template._
+        _Expliquer pourquoi on a fait ce changement ainsi que le code du computed._
 
-    ....
+        ....
 
   - _Que se passe-t-il lorsqu'on ne met pas de valeur à answer-detail ? Est-ce satisfaisant ? Si ce n'est pas le cas, proposer une amélioration._
 
@@ -203,13 +204,12 @@ La suite directe serait de refaire fonctionner les deux boutons.
 
 ## Semaine 6
 
-| Tâche       | Temps estimé | Temps passé | Commentaires                                |
-| ----------- | ------------ | ----------- | ------------------------------------------- |
-| Déploiement | 10 minutes   | 30 minutes  | J'ai rencontré des problèmes avec le Trivia |
-|             |              |             |                                             |
-|             |              |             |                                             |
-|             |              |             |                                             |
-| Rapport     |              |             |                                             |
+| Tâche                     | Temps estimé | Temps passé | Commentaires                                |
+| ------------------------- | ------------ | ----------- | ------------------------------------------- |
+| Déploiement               | 10 minutes   | 30 minutes  | J'ai rencontré des problèmes avec le Trivia |
+| Améliorations             | 2h           | 3h          |                                             |
+| Nettoyage et vérification | 10 minutes   | 15 minutes  |                                             |
+| Rapport                   | 40 minutes   | 55 minutes  |                                             |
 
 **Lien :** https://hepl-bs21inf5.github.io/sem07-project-Mia3105/
 
@@ -222,7 +222,10 @@ J'ai rencontré des problèmes avec le QuizTrivia. Il avait été fait en foncti
 
   - Les options des QuestionRadio s'affichent de façon aléatoire :
 
-    L
+    J'ai choisi cette option car je la trouve importante. Elle donne la possibilité de refaire le quiz en réfléchissant un minimum et de ne pas simplement reséléctionner les mêmes options aux mêmes endroits.
+
+    J'ai implémenté cette option dans le QuizForm. J'ai créé
+
 
   - Un nouveau type de questions : QuestionSelect
 

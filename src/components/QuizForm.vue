@@ -24,6 +24,15 @@ const score = computed<number>(
 
 const totalScore = computed<number>(() => questionStates.value.length)
 
+function shuffleArray<T>(array: T[]): T[] {
+  const shuffled = [...array]
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
+  }
+  return shuffled
+}
+
 const radioOptions1 = ref(
   shuffleArray([
     { value: '3.1514131211', text: '3.1514131211' },
@@ -56,15 +65,6 @@ function reset(event: Event): void {
   document.documentElement.scrollTop = 0
   radioOptions1.value = shuffleArray(radioOptions1.value)
   radioOptions2.value = shuffleArray(radioOptions2.value)
-}
-
-function shuffleArray<T>(array: T[]): T[] {
-  const shuffled = [...array]
-  for (let i = shuffled.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1))
-    ;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
-  }
-  return shuffled
 }
 </script>
 
@@ -146,9 +146,7 @@ function shuffleArray<T>(array: T[]): T[] {
     >
       Aperçu des questions :
       <br />
-      <div v-for="(state, index) in questionStates" :key="index">
-        {{ index + 1 }}. {{state}}
-      </div>
+      <div v-for="(state, index) in questionStates" :key="index">{{ index + 1 }}. {{ state }}</div>
     </div>
 
     <div style="text-align: left">

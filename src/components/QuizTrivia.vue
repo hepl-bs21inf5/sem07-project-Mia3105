@@ -1,16 +1,16 @@
 <script setup lang="ts">
-  import QuestionRadio from "@/components/QuestionRadio.vue";
-  import { computed, ref } from "vue";
-  import { QuestionState } from '@/utils/models'
+import QuestionRadio from '@/components/QuestionRadio.vue'
+import { computed, ref, watch, defineModel } from 'vue'
+import { QuestionState } from '@/utils/models'
 
-  const questions = ref<
-    {
-      question: string;
-      correct_answer: string;
-      incorrect_answers: string[];
-      answer: string ;
-    }[]
-  >([]);
+const questions = ref<
+  {
+    question: string
+    correct_answer: string
+    incorrect_answers: string[]
+    answer: string
+  }[]
+>([])
 
 const questionStates = ref<QuestionState[]>([])
 
@@ -30,8 +30,6 @@ const score = computed<number>(
 
 const totalScore = computed<number>(() => questionStates.value.length)
 
-
-
 function submit(event: Event): void {
   event.preventDefault()
   questionStates.value = questionStates.value.map(() => QuestionState.Submit)
@@ -46,11 +44,26 @@ function reset(event: Event): void {
   document.documentElement.scrollTop = 0
 }
 
+fetch('https://opentdb.com/api.php?amount=10&type=multiple')
+  .then((response) => response.json())
+  .then((data) => (questions.value = data.results))
+
+const model = defineModel<QuestionState>()
+const value = ref<string | null>(null)
 
 
-  fetch("https://opentdb.com/api.php?amount=10&type=multiple")
-    .then((response) => response.json())
-    .then((data) => (questions.value = data.results));
+
+watch(
+  value,
+  (newValue) => {
+    if (newValue === null) {
+      model.value = QuestionState.Empty
+    } else {
+      model.value = QuestionState.Fill
+    }
+  },
+  { immediate: true },
+)
 </script>
 
 <template>
@@ -63,6 +76,7 @@ function reset(event: Event): void {
       Score : {{ score }} / {{ totalScore }}
     </div>
     <br />
+
     <QuestionRadio
       v-for="(question, index) in questions"
       :id="index.toString()"
@@ -71,13 +85,13 @@ function reset(event: Event): void {
       :text="question.question"
       :options="[
         { value: question.correct_answer, text: question.correct_answer },
-        ...question.incorrect_answers.map(answer => ({
+        ...question.incorrect_answers.map((answer) => ({
           value: answer,
           text: answer,
         })),
       ]"
     />
-
+    <br />
     <div style="text-align: left">
       <button class="btn btn-primary" :class="{ disabled: !filled }" type="submit">Terminer</button>
     </div>
@@ -86,7 +100,5 @@ function reset(event: Event): void {
       <button class="btn btn-primary" button @:click="reset">Réinitialiser</button>
     </div>
     <br />
-
-
   </form>
 </template>

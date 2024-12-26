@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defineModel, defineProps, type PropType, ref, watch } from 'vue'
+import { defineModel, defineProps, type PropType, ref, watch, computed } from 'vue'
 import { QuestionState } from '@/utils/models'
 
 const model = defineModel<QuestionState>()
@@ -13,6 +13,11 @@ const props = defineProps({
     required: true,
   },
 })
+
+const answerText = computed<string>(() =>
+    props.options.find((option) => option.value === props.answer)?.text ??
+    props.answer,
+    );
 
 const value = ref<string | null>(null)
 
@@ -47,7 +52,7 @@ watch(
       type="radio"
       :name="props.id"
       :value="option.value"
-      :anwser="props.answer"
+      :anwser="answerText"
       :disabled="
         model === QuestionState.Submit ||
         model === QuestionState.Correct ||
