@@ -39,32 +39,29 @@ watch(
 
 <template>
   <div>
-    <label class="form-select" :for="`${props.id}-${option.value}`">
-      {{ option.text }}
-    </label>
-    <div v-for="option in props.options" :key="option.value" class="form-select">
-    <input
-      :id="`${props.id}-${option.value}`"
+    <label class="from-select" :for="props.id">{{ props.text }}</label>
+    <select
+      :id="props.id"
       v-model="value"
       class="form-select"
       type="select"
       :name="props.id"
-      :value="option.value"
-      :anwser="props.answer"
       :disabled="
         model === QuestionState.Submit ||
         model === QuestionState.Correct ||
         model === QuestionState.Wrong
       "
-    />
-  </div></div>
+    >
+      <option v-for="option in props.options" :key="option.value" class="form-select">
+        {{ option.text }}
+      </option>
+    </select>
 
-
-
-  <div v-if="model === QuestionState.Correct || model === QuestionState.Wrong">
-    <p v-if="model === QuestionState.Correct" class="text-success">Juste !</p>
-    <p v-else class="text-danger">Faux ! La réponse était : {{ answer }}</p>
-    <p class="blockquote-footer">{{ props.answerDetail }}</p>
+    <div v-if="model === QuestionState.Correct || model === QuestionState.Wrong">
+      <p v-if="model === QuestionState.Correct" class="text-success">Juste !</p>
+      <p v-else class="text-danger">Faux ! La réponse était : {{ props.answer }}</p>
+      <p class="blockquote-footer">{{ props.answerDetail }}</p>
+    </div>
   </div>
 </template>
 

@@ -66,6 +66,10 @@ function shuffleArray<T>(array: T[]): T[] {
   }
   return shuffled
 }
+
+
+
+
 </script>
 
 <template>
@@ -122,16 +126,13 @@ function shuffleArray<T>(array: T[]): T[] {
       answer-detail="Le théorème de Pythagore permet de faire un lien entre les angles et les longueurs dans un triangle rectangle."
     />
 
-    <br />
-
-
     <br /><br />
     <p
       style="
         position: fixed;
         top: 85px;
         right: 0px;
-        width: 250px;
+        width: 200px;
         background: white;
         text-align: left;
         padding: 10px;
