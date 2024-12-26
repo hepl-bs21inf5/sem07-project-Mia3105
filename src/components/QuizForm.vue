@@ -66,16 +66,17 @@ function shuffleArray<T>(array: T[]): T[] {
   }
   return shuffled
 }
-
-
-
-
 </script>
 
 <template>
   <form @submit="submit">
     <br />
-    <div v-if="submitted">Score : {{ score }} / {{ totalScore }}</div>
+    <div
+      v-if="submitted"
+      style="width: 110px; background: #0080ff; padding: 10px; font-weight: bold; color: white; border-radius: 10px"
+    >
+      Score : {{ score }} / {{ totalScore }}
+    </div>
     <br />
     <QuestionSelect
       id="jour"
@@ -143,9 +144,10 @@ function shuffleArray<T>(array: T[]): T[] {
         outline: 0px;
       "
     >
-      États des questions :
+      Résumé des questions :
       <br />
-      {{ questionStates }}
+      1. {{ questionStates[0] }} 2. {{ questionStates[1] }} 3. {{ questionStates[2] }} 4.
+      {{ questionStates[3] }}
     </p>
 
     <div style="text-align: left">

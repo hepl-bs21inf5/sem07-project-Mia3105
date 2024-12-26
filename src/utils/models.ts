@@ -1,7 +1,7 @@
 export enum QuestionState {
-  Empty = "Vide",
-  Fill = "Remplie",
+  Empty = "⚪",
+  Fill = "⚫",
   Submit = "Submit",
-  Correct = "Juste",
-  Wrong = "Faux",
+  Correct = "🟢",
+  Wrong = "🔴",
 }

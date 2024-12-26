@@ -58,7 +58,7 @@ watch(
       {{ option.text }}
     </label>
   </div>
-  
+
   <div v-if="model === QuestionState.Correct || model === QuestionState.Wrong">
     <p v-if="model === QuestionState.Correct" class="text-success">Juste !</p>
     <p v-else class="text-danger">Faux ! La réponse était : {{ answer }}</p>
@@ -68,9 +68,9 @@ watch(
 
 <style scoped>
 .text-danger {
-  color: rgb(255, 146, 4) !important;
+  color: rgb(248, 49, 47) !important;
 }
 .text-success {
-  color: rgb(0, 215, 47) !important;
+  color: rgb(0, 210, 106) !important;
 }
 </style>
