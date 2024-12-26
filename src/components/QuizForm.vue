@@ -73,7 +73,7 @@ function shuffleArray<T>(array: T[]): T[] {
     <br />
     <div
       v-if="submitted"
-      style="width: 110px; background: #0080ff; padding: 10px; font-weight: bold; color: white; border-radius: 10px"
+      style="width: 110px; background: #0080ff; padding: 10px; color: white; border-radius: 10px"
     >
       Score : {{ score }} / {{ totalScore }}
     </div>
@@ -128,7 +128,7 @@ function shuffleArray<T>(array: T[]): T[] {
     />
 
     <br /><br />
-    <p
+    <div
       style="
         position: fixed;
         top: 85px;
@@ -144,11 +144,12 @@ function shuffleArray<T>(array: T[]): T[] {
         outline: 0px;
       "
     >
-      Résumé des questions :
+      Aperçu des questions :
       <br />
-      1. {{ questionStates[0] }} 2. {{ questionStates[1] }} 3. {{ questionStates[2] }} 4.
-      {{ questionStates[3] }}
-    </p>
+      <div v-for="(state, index) in questionStates" :key="index">
+        {{ index + 1 }}. {{state}}
+      </div>
+    </div>
 
     <div style="text-align: left">
       <button class="btn btn-primary" :class="{ disabled: !filled }" type="submit">Terminer</button>
