@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { defineModel, defineProps, watch, ref } from 'vue'
+import { defineModel, defineProps, type PropType, watch, ref } from 'vue'
 import { QuestionState } from '@/utils/models'
 
 const reponse = defineModel<QuestionState>()
 const props = defineProps({
   id: { type: String, required: true },
   text: { type: String, required: true },
-  answer: { type: String, required: true },
+  answer: { type: Array as PropType<Array<string>>, required: true },
   placeholder: { type: String, required: true },
   answerDetail: { type: String, default: '' },
 })

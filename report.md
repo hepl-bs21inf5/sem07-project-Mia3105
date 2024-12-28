@@ -152,9 +152,20 @@ La suite directe serait de refaire fonctionner les deux boutons.
 
 - _Questions :_
 
-  - _Comment pourrait-on réécrire la ligne suivante sans l'opérateur ternaire (avec des if et else) model.value = value.value === props.answer ? QuestionState.Correct : QuestionState.Wrong;_
+  - _Comment pourrait-on réécrire la ligne suivante sans l'opérateur ternaire (avec des if et else)_
+  
+    `model.value = value.value === props.answer ? QuestionState.Correct : QuestionState.Wrong;`
 
-    ...... (à répondre)
+    Cette ligne va mettre dans model.value une valeur. Elle vérifie si value.value = props.anwer, si c'est vrai model.value = QuestionState.Correct et si l'égalité est fausse model.value = QuestionState.Wrong. 
+
+    Si on écrit cela en code on obtient :
+
+        if (value.value === props.answer){
+          model.value = QuestionState.Correct ;
+        } 
+        else {
+          model.value = QuestionState.Wrong ;
+        } 
 
   - _Comment pourrait-on réécrire autrement la logique du watch sur value ?_
 
@@ -224,18 +235,19 @@ J'ai rencontré des problèmes avec le QuizTrivia. Il avait été fait en foncti
 
     J'ai choisi cette option car je la trouve importante. Elle donne la possibilité de refaire le quiz en réfléchissant un minimum et de ne pas simplement reséléctionner les mêmes options aux mêmes endroits.
 
-    J'ai implémenté cette option dans le QuizForm. J'ai créé
+    J'ai implémenté cette option dans le QuizForm. J'ai créé 
 
 
   - Un nouveau type de questions : QuestionSelect
 
     L
 
-  - Un autre nouveau type de questions : QuestionCheckbox
+
+  - Une petite box avec un aperçu du statut des questions
 
     L
 
-  - Une petite box avec un aperçu du statut des questions
+  - Les questions avec Trivia
 
     L
 

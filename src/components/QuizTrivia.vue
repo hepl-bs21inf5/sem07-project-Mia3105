@@ -64,6 +64,8 @@ watch(
   },
   { immediate: true },
 )
+
+
 </script>
 
 <template>
@@ -71,7 +73,7 @@ watch(
     <br />
     <div
       v-if="submitted"
-      style="width: 110px; background: #0080ff; padding: 10px; color: white; border-radius: 10px"
+      style="width: 125px; background: #0080ff; padding: 10px; color: white; border-radius: 10px"
     >
       Score : {{ score }} / {{ totalScore }}
     </div>
@@ -81,7 +83,8 @@ watch(
       v-for="(question, index) in questions"
       :id="index.toString()"
       :key="index"
-      :answer="question.answer"
+      v-model="questionStates[index]"
+      :answer="question.correct_answer"
       :text="question.question"
       :options="[
         { value: question.correct_answer, text: question.correct_answer },
@@ -91,13 +94,36 @@ watch(
         })),
       ]"
     />
+
+    <br /><br />
+    <div
+      style="
+        position: fixed;
+        top: 85px;
+        right: 0px;
+        width: 85px;
+        background: white;
+        text-align: left;
+        padding: 10px;
+        border: 1px solid rgb(241, 241, 241);
+        box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px;
+        line-height: 20px;
+        margin: 10px;
+        outline: 0px;
+      "
+    >
+      Aperçu :
+      <br />
+      <div v-for="(state, index) in questionStates" :key="index">{{ index + 1 }}. {{ state }}</div>
+    </div>
+
     <br />
     <div style="text-align: left">
       <button class="btn btn-primary" :class="{ disabled: !filled }" type="submit">Terminer</button>
     </div>
 
     <div style="text-align: right">
-      <button class="btn btn-primary" button @:click="reset">Réinitialiser</button>
+      <button class="btn btn-primary" @:click="reset">Réinitialiser</button>
     </div>
     <br />
   </form>

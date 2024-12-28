@@ -33,16 +33,16 @@ function shuffleArray<T>(array: T[]): T[] {
   return shuffled
 }
 
-const radioOptions1 = ref(
+const questionRadiooptionsshuffle1 =
   shuffleArray([
     { value: '3.1514131211', text: '3.1514131211' },
     { value: '3.1415926535', text: '3.1415926535' },
     { value: '3.1415996633', text: '3.1415996633' },
     { value: '1.1415926535', text: '1.1415926535' },
-  ]),
-)
+  ])
 
-const radioOptions2 = ref(
+
+const questionRadiooptionsshuffle2 = ref(
   shuffleArray([
     { value: 'Théorème de Thalès', text: 'Théorème de Thalès' },
     { value: 'Théorème des deux gendarmes', text: 'Théorème des deux gendarmes' },
@@ -63,8 +63,8 @@ function reset(event: Event): void {
   questionStates.value = questionStates.value.map(() => QuestionState.Empty)
   document.body.scrollTop = 0
   document.documentElement.scrollTop = 0
-  radioOptions1.value = shuffleArray(radioOptions1.value)
-  radioOptions2.value = shuffleArray(radioOptions2.value)
+  questionRadiooptionsshuffle1.value = shuffleArray(questionRadiooptionsshuffle1.value)
+  questionRadiooptionsshuffle2.value = shuffleArray(questionRadiooptionsshuffle2.value)
 }
 </script>
 
@@ -101,7 +101,7 @@ function reset(event: Event): void {
       v-model="questionStates[1]"
       answer="3.1415926535"
       text="2. Quelles sont les 10 premières décimales de π ?"
-      :options="radioOptions1"
+      :options="questionRadiooptionsshuffle1"
       answer-detail="Que (3) j' (1) aime (4) à (1) faire (5) apprendre (9) ce (2) nombre (6) utile (5) aux (3) sages (5)."
     />
 
@@ -123,7 +123,7 @@ function reset(event: Event): void {
       v-model="questionStates[3]"
       answer="Théorème de Pythagore"
       text="4. Quel théorème est utilisé uniquement dans les triangles rectangles ?"
-      :options="radioOptions2"
+      :options="questionRadiooptionsshuffle2"
       answer-detail="Le théorème de Pythagore permet de faire un lien entre les angles et les longueurs dans un triangle rectangle."
     />
 
@@ -154,7 +154,7 @@ function reset(event: Event): void {
     </div>
 
     <div style="text-align: right">
-      <button class="btn btn-primary" button @:click="reset">Réinitialiser</button>
+      <button class="btn btn-primary" @:click="reset">Réinitialiser</button>
     </div>
     <br />
   </form>
