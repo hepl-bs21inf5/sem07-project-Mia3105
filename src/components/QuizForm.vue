@@ -136,7 +136,6 @@ function reset(event: Event): void {
         <div
           v-for="(state, index) in questionStates"
           :key="index"
-          style="display: flex; align-items: center"
         >
           {{ index + 1 }}. {{ state }}
         </div>
@@ -173,7 +172,7 @@ function reset(event: Event): void {
 @media (max-width: 745px) {
   .boxsatutquestions {
     top :  auto ;
-    bottom: 10px;
+    bottom: 30px;
     left: 0;
     right: 0;
     width: 100%;

@@ -88,7 +88,7 @@ watch(
       :key="index"
       v-model="questionStates[index]"
       :answer="question.correct_answer"
-      :text="question.question"
+      :text="(index+1) + '. ' + question.question"
       :options="[
         { value: question.correct_answer, text: question.correct_answer },
         ...question.incorrect_answers.map((answer) => ({
@@ -99,26 +99,18 @@ watch(
     />
 
     <br /><br />
-    <div
-      style="
-        position: fixed;
-        top: 85px;
-        right: 0px;
-        width: 85px;
-        background: white;
-        text-align: left;
-        padding: 10px;
-        border: 1px solid rgb(241, 241, 241);
-        box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px;
-        line-height: 20px;
-        margin: 10px;
-        outline: 0px;
-      "
-    >
-      Aperçu :
+    <div class="boxsatutquestions">
+      Aperçu des questions:
       <br />
-      <div v-for="(state, index) in questionStates" :key="index">{{ index + 1 }}. {{ state }}</div>
-    </div>
+      <div style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center">
+        <!-- Permet que les aperçus s'affichent  en ligne et reviennent à la ligne quand la ligne est pleine -->
+        <div
+          v-for="(state, index) in questionStates"
+          :key="index"
+        >
+          {{ index + 1 }}. {{ state }}
+        </div>
+      </div></div>
 
     <br />
     <div style="text-align: left">
@@ -130,6 +122,34 @@ watch(
       &nbsp; &nbsp;
       <button class="btn btn-primary" @:click="reload">Générer de nouvelles questions</button>
     </div>
-    <br/>
+    <br/><br/><br/><br/><br/><br/><br/>
   </form>
 </template>
+
+
+<style scoped>
+.boxsatutquestions {
+  position: fixed;
+  top: 5%;
+  right: 0px;
+  width: 40%;
+  background: white;
+  text-align: left;
+  padding: 10px;
+  border: 1px solid rgb(241, 241, 241);
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px;
+  line-height: 20px;
+  margin: 10px;
+  outline: 0px;
+}
+
+@media (max-width: 745px) {
+  .boxsatutquestions {
+    top :  auto ;
+    bottom: 30px;
+    left: 0;
+    right: 0;
+    width: 100%;
+  }
+}
+</style>
