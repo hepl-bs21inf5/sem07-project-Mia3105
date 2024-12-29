@@ -231,27 +231,45 @@ J'ai rencontré des problèmes avec le QuizTrivia. Il avait été fait en foncti
 
 - _Améliorations :_
 
-  - Les options des QuestionRadio s'affichent de façon aléatoire :
+  - **Les options des QuestionRadio s'affichent de façon aléatoire :**
 
     J'ai choisi cette option car je la trouve importante. Elle donne la possibilité de refaire le quiz en réfléchissant un minimum et de ne pas simplement reséléctionner les mêmes options aux mêmes endroits.
 
-    J'ai implémenté cette option dans le QuizForm. J'ai créé 
+    J'ai implémenté cette option dans le QuizForm. 
+    J'ai pris une fonction ShuffleArray qui j'ai trouvé sur un forum :
+
+          function shuffleArray<T>(array: T[]): T[] {
+            const shuffled = [...array]
+            for (let i = shuffled.length - 1; i > 0; i--) {
+              const j = Math.floor(Math.random() * (i + 1));
+              [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
+            }
+            return shuffled
+          }
+
+    Elle parcours la liste avec un i depuis la fin en remontant et génère un nombre j aléatoire. Elle inverse ensuite la position des éléments i et de j.
+
+    J'ai ensuite utilisé cette fonction sur le tableau de réponses des QuestionRadio. 
+    
+    En voulant faire cela, j'ai d'abord rencontré un problème. J'ai d'abord fait le Shuffle directement dans le template de la question. En faisant cela, les options se mélangeaient à chaque fois qu'on en choisissait une. J'ai réfléchi au problème et je me suis rendu compte qu'en faisant de cette façon, le Shuffle était inscrit dans la boucle v-for et donc se faisait à chaque changement. 
+    J'ai été obligé de mettre le tableau mélangé dans un nouveau tableau *questionRadiooptionsshuffleX* dans la partie script. Je fais ensuite référence à ce nouveau tableau dans les options de réponses. Ainsi le Shuflle ne se fait plus que quand on recharge la page ou quand on appuie sur le bouton "Réinitialiser" (car je l'ai ajouté dans la fonction reset).
 
 
-  - Un nouveau type de questions : QuestionSelect
+
+  - **Un nouveau type de questions : QuestionSelect**
 
     L
 
 
-  - Une petite box avec un aperçu du statut des questions
+  - **Une petite box avec un aperçu du statut des questions**
 
     L
 
-  - Les questions avec Trivia
+  - **Les questions avec Trivia**
 
     L
 
-  - Plusieurs options possibles pour les QuestionText
+  - **Plusieurs options possibles pour les QuestionText**
 
     L
 

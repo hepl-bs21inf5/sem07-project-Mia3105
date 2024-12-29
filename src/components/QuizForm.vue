@@ -131,9 +131,9 @@ function reset(event: Event): void {
     <div
       style="
         position: fixed;
-        top: 85px;
+        top: 5%;
         right: 0px;
-        width: 200px;
+        width: 40%;
         background: white;
         text-align: left;
         padding: 10px;
@@ -144,9 +144,17 @@ function reset(event: Event): void {
         outline: 0px;
       "
     >
-      Aperçu des questions :
+      Aperçu des questions:
       <br />
-      <div v-for="(state, index) in questionStates" :key="index">{{ index + 1 }}. {{ state }}</div>
+      <div style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center">  <!-- Permet que les aperçus s'affichent  en ligne et reviennent à la ligne quand la ligne est pleine -->
+        <div
+          v-for="(state, index) in questionStates"
+          :key="index"
+          style="display: flex; align-items: center"
+        >
+          {{ index + 1 }}. {{ state }}
+        </div>
+      </div>
     </div>
 
     <div style="text-align: left">
