@@ -150,7 +150,7 @@ function reset(event: Event): void {
     <div style="text-align: right">
       <button class="btn btn-primary" @:click="reset">Réinitialiser</button>
     </div>
-    <br />
+    <br/><br/><br/><br/><br/><br/><br/>
   </form>
 </template>
 
@@ -170,9 +170,10 @@ function reset(event: Event): void {
   outline: 0px;
 }
 
-@media (max-width: 600px) {
-  .question-preview-box {
-    bottom: 0;
+@media (max-width: 745px) {
+  .boxsatutquestions {
+    top :  auto ;
+    bottom: 10px;
     left: 0;
     right: 0;
     width: 100%;
