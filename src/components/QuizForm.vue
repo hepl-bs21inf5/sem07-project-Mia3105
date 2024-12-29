@@ -128,25 +128,11 @@ function reset(event: Event): void {
     />
 
     <br /><br />
-    <div
-      style="
-        position: fixed;
-        top: 5%;
-        right: 0px;
-        width: 40%;
-        background: white;
-        text-align: left;
-        padding: 10px;
-        border: 1px solid rgb(241, 241, 241);
-        box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px;
-        line-height: 20px;
-        margin: 10px;
-        outline: 0px;
-      "
-    >
+    <div class="boxsatutquestions">
       Aperçu des questions:
       <br />
-      <div style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center">  <!-- Permet que les aperçus s'affichent  en ligne et reviennent à la ligne quand la ligne est pleine -->
+      <div style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center">
+        <!-- Permet que les aperçus s'affichent  en ligne et reviennent à la ligne quand la ligne est pleine -->
         <div
           v-for="(state, index) in questionStates"
           :key="index"
@@ -167,3 +153,29 @@ function reset(event: Event): void {
     <br />
   </form>
 </template>
+
+<style scoped>
+.boxsatutquestions {
+  position: fixed;
+  top: 5%;
+  right: 0px;
+  width: 40%;
+  background: white;
+  text-align: left;
+  padding: 10px;
+  border: 1px solid rgb(241, 241, 241);
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px;
+  line-height: 20px;
+  margin: 10px;
+  outline: 0px;
+}
+
+@media (max-width: 600px) {
+  .question-preview-box {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+  }
+}
+</style>
