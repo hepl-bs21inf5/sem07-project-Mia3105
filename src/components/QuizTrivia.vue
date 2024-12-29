@@ -58,6 +58,8 @@ fetch('https://opentdb.com/api.php?amount=10&type=multiple')
 const model = defineModel<QuestionState>()
 const value = ref<string | null>(null)
 
+
+
 watch(
   value,
   (newValue) => {
@@ -100,7 +102,7 @@ watch(
         :key="index"
         v-model="questionStates[index]"
         :answer="question.correct_answer"
-        :text="index + 1 + '. ' + question.question"
+        :text="index+1 + '. ' + question.question"
         :options="[
           { value: question.correct_answer, text: question.correct_answer },
           ...question.incorrect_answers.map((answer) => ({

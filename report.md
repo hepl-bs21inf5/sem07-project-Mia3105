@@ -292,7 +292,20 @@ J'ai rencontré des problèmes avec le QuizTrivia. Il avait été fait en foncti
     J'ai ensuite utilisé cette fonction sur le tableau de réponses des QuestionRadio.
 
     En voulant faire cela, j'ai d'abord rencontré un problème. J'ai d'abord fait le Shuffle directement dans le template de la question. En faisant cela, les options se mélangeaient à chaque fois qu'on en choisissait une. J'ai réfléchi au problème et je me suis rendu compte qu'en faisant de cette façon, le Shuffle était inscrit dans la boucle v-for et donc se faisait à chaque changement.
-    J'ai été obligé de mettre le tableau mélangé dans un nouveau tableau _questionRadiooptionsshuffleX_ dans la partie script. Je fais ensuite référence à ce nouveau tableau dans les options de réponses. Ainsi, le Shuflle ne se fait plus que quand on recharge la page ou quand on appuie sur le bouton "Réinitialiser" (car je l'ai ajouté dans la fonction reset).
+    J'ai été obligé de mettre le tableau mélangé dans un nouveau tableau _questionRadio_options_shuffleX_ dans la partie script. 
+    
+        const questionRadio_options_shuffle1 = ref(
+        shuffleArray([
+          { value: '3.1514131211', text: '3.1514131211' },
+          { value: '3.1415926535', text: '3.1415926535' },
+          { value: '3.1415996633', text: '3.1415996633' },
+          { value: '1.1415926535', text: '1.1415926535' },
+        ]),
+        )
+
+    Je fais ensuite référence à ce nouveau tableau dans les options de réponses: `:options="questionRadio_options_shuffle1"`
+
+    Ainsi, le Shuflle ne se fait plus que quand on recharge la page ou quand on appuie sur le bouton "Réinitialiser" (car je l'ai ajouté dans la fonction reset).
 
   - **Un nouveau type de questions : QuestionSelect**
 
@@ -302,9 +315,31 @@ J'ai rencontré des problèmes avec le QuizTrivia. Il avait été fait en foncti
 
     J'ai commencé par changer le type et la classe de la question avec select. J'ai ensuite changé la balise input en balise select, car on ne veut pas que l'utilisateur saisisse une donnée (coche une option ou écrive un mot), on veut qu'il sélectionne une option. 
 
-    À ce stade-là, la question s'affichait, mais les options se listaient toutes directement, chacune avec un menu déroulant propre. Il a donc fallu que je déplace la boucle v-for, car elle ne faisait pas au bon endroit. Je n'avais pas besoin que tout se répète, juste que les options soient lues par la boucle. J'ai donc déplacé la boucle qui affiche les options en dessous des informations de la question (après le < select >). J'ai ensuite dû mettre la balise < label > au-dessus de cette balise select pour props.id soit déclaré avant la définition de la question.
+    À ce stade-là, la question s'affichait, mais les options se listaient toutes directement, chacune avec un menu déroulant propre. Il a donc fallu que je déplace la boucle v-for, car elle ne faisait pas au bon endroit. Je n'avais pas besoin que tout se répète, juste que les options soient lues par la boucle. J'ai donc déplacé la boucle qui affiche les options en dessous des informations de la question (après le < select >).
+    
+    J'ai ensuite dû mettre la balise < label > au-dessus de cette balise select pour props.id soit déclaré avant la définition de la question.
 
     Le dernier changement a été de changer la balise de la boucle v-for. Avec la balise < div >, le menu déroulant s'affichait autant de fois qu'il y avait d'options. J'ai donc changé la balise < div > en une balise < option >.
+
+        {{ props.text }}
+        <select
+          :id="props.id"
+          v-model="value"
+          class="form-select"
+          type="select"
+          :name="props.id"
+          :anwser="answerText"
+          :disabled="
+            model === QuestionState.Submit ||
+            model === QuestionState.Correct ||
+            model === QuestionState.Wrong
+          "
+        >
+        <label class="from-select" :for="props.id"/>
+          <option v-for="option in props.options" :key="option.value" class="form-select">
+            {{ option.text }}
+          </option>
+        </select>
 
   - **Une petite box avec un aperçu du statut des questions**
 
@@ -316,14 +351,53 @@ J'ai rencontré des problèmes avec le QuizTrivia. Il avait été fait en foncti
 
     La dernière chose que j'ai changée est la façon dont les pastilles s'affichaient. Jusqu'ici, elles s'affichaient comme cela : [⚪,⚪], ce qui n'était pas très joli et ce qui ne permettait pas facilement de savoir de quelle question il s'agit. J'ai donc fait une boucle v-for qui parcourt questionStates et qui affiches l'état de chaque question avec son numéro : 1. ⚪ 2. ⚪.
 
+        <div v-for="(state, index) in questionStates" :key="index">
+          {{ index + 1 }}. {{ state }}
+        </div>
+
     Je pense que cette façon de faire est bien pour des petits questionnaires, mais si les questionnaires deviennent assez longs, cette box flottante risque de prendre beaucoup de place. Il faudrait que je réfléchisse à une autre façon de la positionner pour être sûr qu'elle n'empiète pas sur le texte des questions quand le nombre de questions devient grand.
 
   - **Les questions avec Trivia**
 
-    .............
+    J'ai rendu le quiz Trivia jouable. J'aime bien le fait qu'il y ait un grand nombre de questions aléatoires qui soient générées, cela permet de jouer et de tester sa culture générale sur plein de sujets.
+
+    Le document de base de QuizTrivia est le même que celui dans QuestionRadio. Il a juste fallu faire quelque petit ajustement pour le remettre à niveau, car le QuizRadio avait gagné des fonctionnalités entre temps (entre autres les watch). J'ai supprimé le watch sur model, car il générait une erreur de type et faisait, dans le QuizTrivia, la même chose que l'autre watch.
+    J'ai aussi dû faire quelques changements dans les noms : modifier le `:anwser="answerText"` en `:answer="question.correct_answer"`, changer le `v-model="value"` en `v-model="questionStates[index]"`. Avant de changer cela, les boutons ne fonctionnaient pas, les états des questions n'étaient pas pris en compte. J'ai aussi changé le texte des questions pour que les questions soient numérotées.
+
+    J'ai ensuite pris ce qui se trouvait dans le QuizForm et je l'ai adapté pour le QuizTrivia.
+    J'ai copier-coller toutes les fonctions et déclarations se trouvant dans la partie script du QuizForm. 
+    Je ne crois pas avoir dû faire des changements dans le script pour que le quiz fonctionne. 
+    J'ai ajouté une fonction reset qui recharge la page et qui est associer à un bouton "Générer de nouvelles questions" pour que l'apparition de nouvelles questions soit plus intuitive.
+
+
 
   - **Plusieurs options possibles pour les QuestionText**
 
-    .............
+    Je trouve que cette amélioration est très importante pour les QuestionText. Si on demande un nombre à l'utilisateur, on ne sait pas s'il va le rentrer en chiffre, en lettre, avec une minuscule, avec une majuscule, .... Je trouve très bien de pouvoir accepter plusieurs réponses et ne pas devoir préciser à l'utilisateur qu'il doit obligatoirement entrer des chiffres par exemple.
+
+    J'ai commencé par changer le type de answer, j'avais besoin que ce soit un array, un tableau de valeurs.
+
+    J'ai ensuite dû changer la logique du watch sur réponse. Il a fallu que je l'adapte pour qu'il vérifie si l'option tapée par l'utilisateur se trouvait dans le tableau avec les réponses. Pour cela, j'ai utilisé la fonction `includes()`. J'ai vérifié que `value.value` soit bien dans le tableau `props.answer` et j'ai mis cette valeur dans `reponse.value`. Après avoir fait cela, j'ai eu une erreur, car value.value peut être null et le logiciel n'était pas content de vérifier si la valeur null était dans une liste. J'ai donc gérer l'erreur en lui asignant un string vide si elle était null.
+
+        watch(reponse, (newModel) => {
+        if (newModel === QuestionState.Submit) {
+          if (value.value == null) {
+            value.value = ''
+          } else {
+            reponse.value = props.answer.includes(value.value)
+              ? QuestionState.Correct
+              : QuestionState.Wrong
+          }
+        } else if (newModel === QuestionState.Empty) {
+          value.value = null
+        }
+        })
+
+    Cette amélioration est assez bonne, mais il faudrait essayer de gérer les cases avant de comparer les valeurs. Cela coûte beaucoup de devoir anticiper toutes les possibilités que pourrait rentrer l'utilisateur. Si on peut déjà en avoir un peu moins à gérer un mettant la réponse qu'on récupère toute en minuscule, cela est déjà un peu plus facile.
+
+
 
 ### Suite du projet :
+La suite du projet serait d'améliorer encore le quiz au ajoutant par exemple les QuestionCheck avec les réponses multiples, proposer des questtions sous forme de texte à trous avec des QuestionSelect, .... On peut imaginer beaucoup de choses pour encore améliorer ce quiz. On peut aussi penser à des aspects plus techniques, comme la box à statuts de questions qui devrait être optimisée. 
+
+Je pense que je vais encore pas mal m'amuser avec ce quiz, bien que le projet soit fini. Je vais continuer à essayer de l'améliorer. Je vais aussi pouvoir changer les questions pour me permettre de révisions mes cours et peut-être que je pourrais aussi en faire bon usage dans mon métier d'enseignant.

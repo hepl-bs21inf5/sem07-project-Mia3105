@@ -93,18 +93,15 @@ function reset(event: Event): void {
     <br />
     <div class="box_question">
       <QuestionSelect
-        id="jour"
+        id="premier"
         v-model="questionStates[0]"
-        answer="a"
-        text="1. Quelle est la première lettre de l'alphabet ?"
-        placeholder="Veuillez choisir une option"
+        answer="2"
+        text="1. Quel est le premier nombre permier ?"
         :options="[
-          { value: 'a', text: 'a' },
-          { value: 'e', text: 'e' },
-          { value: 'i', text: 'i' },
-          { value: 'o', text: 'o' },
-          { value: 'u', text: 'u' },
-          { value: 'y', text: 'y' },
+          { value: '5', text: '5' },
+          { value: '2', text: '2' },
+          { value: '7', text: '7' },
+          { value: '3', text: '3' },
         ]"
         answer-detail="C'est a."
       />
