@@ -93,7 +93,7 @@ function reset(event: Event): void {
         id="premier"
         v-model="questionStates[0]"
         answer="2"
-        text="1. Quel est le premier nombre permier ?"
+        text="1. Quel est le premier nombre premier ?"
         :options="[
           { value: '5', text: '5' },
           { value: '2', text: '2' },
