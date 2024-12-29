@@ -76,12 +76,25 @@ watch(
     <br />
     <div
       v-if="submitted"
-      style="width: 125px; background: #0080ff; padding: 10px; color: white; border-radius: 10px"
+      style="width: 125px; background: #008cff; padding: 10px; color: white; border-radius: 10px"
     >
       Score : {{ score }} / {{ totalScore }}
     </div>
+    <br/>
+    <div
+      v-if="score == totalScore"
+      style="font-size: x-large; font-weight: bold;"
+    >
+    <img src="https://images.emojiterra.com/mozilla/1024px/1f389.png" width=100px >
+    &nbsp; &nbsp;
+    BRAVO !!
+    &nbsp; &nbsp;
+    <img src="https://images.emojiterra.com/mozilla/1024px/1f389.png" width=100px >
+      &nbsp; &nbsp;
+      <img src="https://images.emojiterra.com/google/noto-emoji/unicode-16.0/color/1024px/1f44f.png" width=100px >
+    </div>
     <br />
-    <div v-for="(question, index) in questions" :key="index" class="boxquestion">
+    <div v-for="(question, index) in questions" :key="index" class="box_question">
       <QuestionRadio
         :id="index.toString()"
         :key="index"
@@ -99,7 +112,7 @@ watch(
     </div>
 
     <br /><br />
-    <div class="boxsatutquestions">
+    <div class="box_satut_questions">
       Aperçu des questions:
       <br />
       <div style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center">
@@ -125,7 +138,7 @@ watch(
 </template>
 
 <style scoped>
-.boxquestion {
+.box_question {
   border: 2px solid rgb(238, 247, 252);
   border-radius: 10px;
   background: rgb(238, 247, 252);
@@ -134,7 +147,7 @@ watch(
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px;
 }
 
-.boxsatutquestions {
+.box_satut_questions {
   position: fixed;
   top: 5%;
   right: 0px;
@@ -151,7 +164,7 @@ watch(
 }
 
 @media (max-width: 745px) {
-  .boxsatutquestions {
+  .box_satut_questions {
     top: auto;
     bottom: 30px;
     left: 0;

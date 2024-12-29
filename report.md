@@ -181,11 +181,29 @@ J'ai de nouveau eu quelques porblèmes à bien saisir comment fonctionnait le wa
 
   - _Comment pourrait-on réécrire autrement la logique du watch sur value ?_
 
-    ...............
+    La logique du watch sur value est comme cela :
+
+        watch(value, (newValue) => {
+          if (newValue === null) {
+          model.value = QuestionState.Empty
+          } else {
+          model.value = QuestionState.Fill
+          }
+        },
+        { immediate: true },
+        )
+
+    Elle attribue une valeur à model.valeur en fonction de ce que vaut newValue. On pourrait réécrire cette logique avec un opérateur ternaire :
+
+        watch(value, (newValue) => {
+          model.value = newValue === null ? QuestionState.Empty : QuestionState.Fill,
+        }
+        { immediate: true },
+        )
 
 ### Suite du projet :
 
-..................
+On pourrait vouloir introduire une explication si la réponse est fausse.
 
 ---
 
@@ -199,7 +217,7 @@ J'ai de nouveau eu quelques porblèmes à bien saisir comment fonctionnait le wa
 | Rapport           | 30 minutes   | 25 minutes  |              |
 
 ### Difficultés :
-..................
+Je n'ai pas rencontré de diffucultés particulières cette semaine.
 
 ### Explications et réflexions sur le code :
 
@@ -215,7 +233,11 @@ J'ai de nouveau eu quelques porblèmes à bien saisir comment fonctionnait le wa
     _Remplacer {{ props.answer }} par {{ answerText }} dans le template._
     _Expliquer pourquoi on a fait ce changement ainsi que le code du computed._
 
-    ............
+    On fait cela pour éviter des fautes. 
+
+    Le `props.otions.find` parcourt la liste des options et regarde si une des options (option.value) correspond à la réponse (props.answer). Si elle trouve une correspondance entre l'answer et une des options, elle utilise alors le texte de l'option comme réponse dans props.answer. Si elle ne trouve aucune option qui ne corresponde à l'answer, alors elle utilise le texte déjà présent dans props.answer. 
+
+    Cela nous permet de faire afficher directement ce que nous avions décider comme texte pour la réponse au lieu d'afficher ce qui se trouve dans la value. Cela nous permet aussi de nous rendre compte d'éventuelles fautes de frappes qui rendraient la réponse fausse, malgré qu'elle soit vraie.
 
   - _Que se passe-t-il lorsqu'on ne met pas de valeur à answer-detail ? Est-ce satisfaisant ? Si ce n'est pas le cas, proposer une amélioration._
 
