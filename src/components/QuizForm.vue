@@ -33,14 +33,14 @@ function shuffleArray<T>(array: T[]): T[] {
   return shuffled
 }
 
-const questionRadiooptionsshuffle1 =
+const questionRadiooptionsshuffle1 = ref(
   shuffleArray([
     { value: '3.1514131211', text: '3.1514131211' },
     { value: '3.1415926535', text: '3.1415926535' },
     { value: '3.1415996633', text: '3.1415996633' },
     { value: '1.1415926535', text: '1.1415926535' },
-  ])
-
+  ]),
+)
 
 const questionRadiooptionsshuffle2 = ref(
   shuffleArray([
@@ -110,7 +110,7 @@ function reset(event: Event): void {
     <QuestionText
       id="planète"
       v-model="questionStates[2]"
-      answer="8"
+      :answer="['8', 'huit']"
       text="3. Combien y a-t-il de planètes dans le système solaire ?"
       placeholder="Veuillez saisir un nombre"
       answer-detail="Les 8 planètes sont Mercure, Venus, Terre, Mars, Jupiter, Saturne, Uranus, Neptune. Pluton n'est plus considérée comme une planète."

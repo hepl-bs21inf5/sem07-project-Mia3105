@@ -15,7 +15,13 @@ const value = ref<string | null>(null)
 
 watch(reponse, (newModel) => {
   if (newModel === QuestionState.Submit) {
-    reponse.value = value.value === props.answer ? QuestionState.Correct : QuestionState.Wrong
+    if (value.value == null) {
+      value.value = ''
+    } else {
+      reponse.value = props.answer.includes(value.value)
+        ? QuestionState.Correct
+        : QuestionState.Wrong
+    }
   } else if (newModel === QuestionState.Empty) {
     value.value = null
   }
@@ -52,7 +58,7 @@ watch(
   />
   <div v-if="reponse === QuestionState.Correct || reponse === QuestionState.Wrong">
     <p v-if="reponse === QuestionState.Correct" class="text-success">Juste !</p>
-    <p v-else class="text-danger">Faux ! La réponse était : {{ answer }}</p>
+    <p v-else class="text-danger">Faux ! La réponse était : {{ props.answer[0] }}</p>
     <p class="blockquote-footer">{{ props.answerDetail }}</p>
   </div>
 </template>
@@ -65,4 +71,3 @@ watch(
   color: rgb(0, 210, 106) !important;
 }
 </style>
-
