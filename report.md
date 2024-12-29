@@ -11,7 +11,7 @@
 
 ### Difficultés :
 
-Dans un premier temps, j'ai trouvé assez difficile de faire le compteur de score et de faire le bouton Réinitialiser. J'ai encore un problème, car si toutes les questions sont complétées, le bouton pour réinitialiser fonctionne une première fois comme le bouton Temriner et ensuite en appuyant une deuxième fois, il réinitialise.
+Dans un premier temps, j'ai trouvé assez difficile de faire le compteur de score et de faire le bouton Réinitialiser. J'ai encore un problème, car si toutes les questions sont complétées, le bouton pour réinitialiser fonctionne une première fois comme le bouton Terminer et ensuite en appuyant une deuxième fois, il réinitialise.
 
 ### Explications et réflexions sur le code :
 
@@ -26,11 +26,11 @@ Dans un premier temps, j'ai trouvé assez difficile de faire le compteur de scor
   - _App.vue :_
     Il permet de générer un lien URL en local pour visualiser la page.
   - _router/index.ts :_
-    C'est un fichier TypeScript. Il permet de lier les chemins aux page vue.
+    C'est un fichier TypeScript. Il permet de lier les chemins aux pages vue.
   - _AboutView.vue :_
     Il permet de définir l'onglet à propos qui donne les informations sur la page.
   - _HomeView.vue :_
-    Il défini le titre de la page de quiz, le grand "Quiz" en haut de la page.
+    Il définit le titre de la page de quiz, le grand "Quiz" en haut de la page.
   - _QuizForm.vue :_
     Il permet d'écrire tout ce qui sera afficher dans le quiz.
 
@@ -40,19 +40,19 @@ Dans un premier temps, j'ai trouvé assez difficile de faire le compteur de scor
 
     Les deux permettent de définir un objet.
     ref permet de définir un string, int, ...
-    computed permet de définir une fonction, quelque chose qui va être lu et executé.
+    computed permet de définir une fonction, quelque chose qui va être lu et exécuté.
 
   - _Que se passe-t-il lorsqu'on clique sur le bouton "Terminer" ?_
 
-    Lorsque l'on clique sur le bouton Terminer, on rentre dans la fonction submit. Cette fonction va compter le nombre de point qui ont été fait et va ensuite ouvrir une fenêtre textuelle qui va afficher un récapitulatif des réponses données et qui va ensuite afficher le score.
+    Lorsque l'on clique sur le bouton Terminer, on rentre dans la fonction submit. Cette fonction va compter le nombre de points qui ont été faits et va ensuite ouvrir une fenêtre textuelle qui va afficher un récapitulatif des réponses données et qui va ensuite afficher le score.
 
   - _Qu'est-ce qu'un v-model ?_
 
-    Cela permet de faire le lien entre la page et le code. S'il y a un changement dans le code, cela changera sur la page et inversément.
+    Cela permet de faire le lien entre la page et le code. S'il y a un changement dans le code, cela changera sur la page et inversement.
 
   - _À quoi sert le `:class="{ disabled: !filled }"` ?_
 
-    Cela désactive le bouton Terminer tant que la fonction filled ne reçoit pas "True", c'est-à-dire tant que toutes les question n'ont pas de réponses. Il faut répondre à toutes les questions pour pouvoir appuyer sur le bouton Terminer.
+    Cela désactive le bouton Terminer tant que la fonction filled ne reçoit pas "True", c'est-à-dire tant que toutes les questions n'ont pas de réponses. Il faut répondre à toutes les questions pour pouvoir appuyer sur le bouton Terminer.
 
 ### Suite du projet :
 
@@ -72,8 +72,8 @@ Je trouve frustrant de devoir à chaque fois tout réécrire, autant pour créer
 
 ### Difficultés :
 
-Je n'ai pas eu de grande difficultée cette semaine.
-Peut-être une petite difficultée pour bien comprendre le fichier QuestionRadio pour être capable de reproduire et adapter dans le QuestionText.
+Je n'ai pas eu de grandes difficultés cette semaine.
+Peut-être une petite difficulté pour bien comprendre le fichier QuestionRadio pour être capable de reproduire et d'adapter dans le QuestionText.
 
 ### Explications et réflexions sur le code :
 
@@ -82,15 +82,15 @@ Peut-être une petite difficultée pour bien comprendre le fichier QuestionRadio
   - _Quelle est la différence entre un prop et un modèle (v-model) ?_
 
     Le modèle permet de définir les objets qui pourront être modifiés sur la page après, comme l'état des questions.
-    Le prop permet de définir le squelette de la question, les choses qui ne seront jamais modifiée par la suite, comme l'id de la question, le texte, les options, la réponse correcte.
+    Le prop permet de définir le squelette de la question, les choses qui ne seront jamais modifiées par la suite, comme l'id de la question, le texte, les options, la réponse correcte.
 
   - _Comment rendre la propriété placeholder optionnelle ?_
 
-    Le placeholder ne serait pas nécessaire si, dans l'intitulé de la quesiton, on écrivait directement que la réponse est un nombre à entrer.
+    Le placeholder ne serait pas nécessaire si, dans l'intitulé de la question, on écrivait directement que la réponse est un nombre à entrer.
 
 ### Suite du projet :
 
-Est-ce que ce serait possible de rendre la création des questions encore plus simple ? D'avoir une sorte de formulaire général avec une boucle qui ferait qu'on n'a pas besoin de faire appel aux QuestionRadio et QuestionText à chaque fois que l'on veut crééer un question.
+Est-ce que ce serait possible de rendre la création des questions encore plus simple ? D'avoir une sorte de formulaire général avec une boucle qui ferait qu'on n'a pas besoin de faire appel aux QuestionRadio et QuestionText à chaque fois que l'on veut créer une question.
 
 ---
 
@@ -138,7 +138,7 @@ J'ai eu un peu de mal à bien comprendre le watch.
           return score;
           })
 
-    La première manière avec le filter fait un tri dans les questions et filtre uniquement les questions qui ont "Correct" comme satus et les met dans une liste. Le score est ensuite la longueur de la liste.
+    La première manière avec le filter fait un tri dans les questions et filtre uniquement les questions qui ont "Correct" comme satut et les met dans une liste. Le score est ensuite la longueur de la liste.
     La deuxième manière avec le for parcourt toutes les questions et quand elle rencontre une question dont le statut est "Correct", elle augmente le nombre "score" de 1.
 
 ### Suite du projet :
@@ -158,7 +158,7 @@ La suite directe serait de refaire fonctionner les deux boutons.
 
 ### Difficultés :
 
-J'ai de nouveau eu quelques porblèmes à bien saisir comment fonctionnait le watch pour le retranscrire dans les autres questions.
+J'ai de nouveau eu quelques problèmes pour bien saisir comment fonctionne le watch pour le retranscrire dans les autres questions.
 
 ### Explications et réflexions sur le code :
 
@@ -170,7 +170,7 @@ J'ai de nouveau eu quelques porblèmes à bien saisir comment fonctionnait le wa
 
     Cette ligne va mettre dans model.value une valeur. Elle vérifie si value.value = props.anwer, si c'est vrai model.value = QuestionState.Correct et si l'égalité est fausse model.value = QuestionState.Wrong.
 
-    Si on écrit cela en code on obtient :
+    Si on écrit cela en code, on obtient :
 
         if (value.value === props.answer){
           model.value = QuestionState.Correct ;
@@ -217,7 +217,7 @@ On pourrait vouloir introduire une explication si la réponse est fausse.
 | Rapport           | 30 minutes   | 25 minutes  |              |
 
 ### Difficultés :
-Je n'ai pas rencontré de diffucultés particulières cette semaine.
+Je n'ai pas rencontré de difficultés particulières cette semaine.
 
 ### Explications et réflexions sur le code :
 
@@ -237,7 +237,7 @@ Je n'ai pas rencontré de diffucultés particulières cette semaine.
 
     Le `props.otions.find` parcourt la liste des options et regarde si une des options (option.value) correspond à la réponse (props.answer). Si elle trouve une correspondance entre l'answer et une des options, elle utilise alors le texte de l'option comme réponse dans props.answer. Si elle ne trouve aucune option qui ne corresponde à l'answer, alors elle utilise le texte déjà présent dans props.answer. 
 
-    Cela nous permet de faire afficher directement ce que nous avions décider comme texte pour la réponse au lieu d'afficher ce qui se trouve dans la value. Cela nous permet aussi de nous rendre compte d'éventuelles fautes de frappes qui rendraient la réponse fausse, malgré qu'elle soit vraie.
+    Cela nous permet de faire afficher directement ce que nous avions décidé comme texte pour la réponse au lieu d'afficher ce qui se trouve dans la value. Cela nous permet aussi de nous rendre compte d'éventuelles fautes de frappe qui rendraient la réponse fausse, malgré qu'elle soit vraie.
 
   - _Que se passe-t-il lorsqu'on ne met pas de valeur à answer-detail ? Est-ce satisfaisant ? Si ce n'est pas le cas, proposer une amélioration._
 
@@ -248,6 +248,7 @@ Je n'ai pas rencontré de diffucultés particulières cette semaine.
     Avec le 'v-if="props.answerDetail', on vérifie qu'il existe bien et qu'il n'est pas vide. S'il est vide, alors on n'affiche rien (pas de tiret).
 
 ### Suite du projet :
+La suite du projet est de vraiment personnaliser ma page et d'ajouter différentes améliorations.
 
 ---
 
@@ -272,7 +273,7 @@ J'ai rencontré des problèmes avec le QuizTrivia. Il avait été fait en foncti
 
   - **Les options des QuestionRadio s'affichent de façon aléatoire :**
 
-    J'ai choisi cette option car je la trouve importante. Elle donne la possibilité de refaire le quiz en réfléchissant un minimum et de ne pas simplement reséléctionner les mêmes options aux mêmes endroits.
+    J'ai choisi cette option, car je la trouve importante. Elle donne la possibilité de refaire le quiz en réfléchissant un minimum et de ne pas simplement reséléctionner les mêmes options aux mêmes endroits.
 
     J'ai implémenté cette option dans le QuizForm.
     J'ai pris une fonction ShuffleArray qui j'ai trouvé sur un forum :
@@ -286,24 +287,36 @@ J'ai rencontré des problèmes avec le QuizTrivia. Il avait été fait en foncti
             return shuffled
           }
 
-    Elle parcours la liste avec un i depuis la fin en remontant et génère un nombre j aléatoire. Elle inverse ensuite la position des éléments i et de j.
+    Elle parcourt la liste avec un i depuis la fin en remontant et génère un nombre j aléatoire. Elle inverse ensuite la position des éléments i et de j.
 
     J'ai ensuite utilisé cette fonction sur le tableau de réponses des QuestionRadio.
 
     En voulant faire cela, j'ai d'abord rencontré un problème. J'ai d'abord fait le Shuffle directement dans le template de la question. En faisant cela, les options se mélangeaient à chaque fois qu'on en choisissait une. J'ai réfléchi au problème et je me suis rendu compte qu'en faisant de cette façon, le Shuffle était inscrit dans la boucle v-for et donc se faisait à chaque changement.
-    J'ai été obligé de mettre le tableau mélangé dans un nouveau tableau _questionRadiooptionsshuffleX_ dans la partie script. Je fais ensuite référence à ce nouveau tableau dans les options de réponses. Ainsi le Shuflle ne se fait plus que quand on recharge la page ou quand on appuie sur le bouton "Réinitialiser" (car je l'ai ajouté dans la fonction reset).
+    J'ai été obligé de mettre le tableau mélangé dans un nouveau tableau _questionRadiooptionsshuffleX_ dans la partie script. Je fais ensuite référence à ce nouveau tableau dans les options de réponses. Ainsi, le Shuflle ne se fait plus que quand on recharge la page ou quand on appuie sur le bouton "Réinitialiser" (car je l'ai ajouté dans la fonction reset).
 
   - **Un nouveau type de questions : QuestionSelect**
 
-    J'ai créé une nouvelle catégorie de question : les QuestionSelect. Les options de réponses sont contenues dans un menu déroulant.
+    J'ai créé une nouvelle catégorie de questions : les QuestionSelect. Les options de réponses sont contenues dans un menu déroulant. Je trouve intéressant de pouvoir proposer différentes formes de questions, cela permet de varier un peu et de tenir l'utilisateur en alerte.
 
     Pour faire cela, je me suis basée sur le code des QuestionRadio, parce que le principe est le même sauf que les options ne sont pas directement visibles, et j'ai fait quelques changements.
 
-    .............
+    J'ai commencé par changer le type et la classe de la question avec select. J'ai ensuite changé la balise input en balise select, car on ne veut pas que l'utilisateur saisisse une donnée (coche une option ou écrive un mot), on veut qu'il sélectionne une option. 
+
+    À ce stade-là, la question s'affichait, mais les options se listaient toutes directement, chacune avec un menu déroulant propre. Il a donc fallu que je déplace la boucle v-for, car elle ne faisait pas au bon endroit. Je n'avais pas besoin que tout se répète, juste que les options soient lues par la boucle. J'ai donc déplacé la boucle qui affiche les options en dessous des informations de la question (après le < select >). J'ai ensuite dû mettre la balise < label > au-dessus de cette balise select pour props.id soit déclaré avant la définition de la question.
+
+    Le dernier changement a été de changer la balise de la boucle v-for. Avec la balise < div >, le menu déroulant s'affichait autant de fois qu'il y avait d'options. J'ai donc changé la balise < div > en une balise < option >.
 
   - **Une petite box avec un aperçu du statut des questions**
 
-    .............
+    J'ai créé une petite box flottante qui affiche le statut des questions.
+
+    Je suis partie du "Debug états" que nous avions fait. J'ai fait des modifications dans son style pour qu'il soit flottant et reste toujours en haut de la page. Je l'ai adapté par la suite aux petits écrans en faisait en sorte qu'il descende en bas de la fenêtre en dessous d'une certaine largeur d'écran.
+
+    J'ai été ensuite dans le fichier models.ts et j'ai modifié les mots associés aux différents états. Dans un premier temps, j'ai simplement traduit en français les mots, mais cela faisait énormément "élément du débogage". Alors, je me suis dit que des petites pastilles seraient : ⚪ pour Empty, ⚫ pour Fill, 🟢 pour Correct, 🔴 pour Wrong.
+
+    La dernière chose que j'ai changée est la façon dont les pastilles s'affichaient. Jusqu'ici, elles s'affichaient comme cela : [⚪,⚪], ce qui n'était pas très joli et ce qui ne permettait pas facilement de savoir de quelle question il s'agit. J'ai donc fait une boucle v-for qui parcourt questionStates et qui affiches l'état de chaque question avec son numéro : 1. ⚪ 2. ⚪.
+
+    Je pense que cette façon de faire est bien pour des petits questionnaires, mais si les questionnaires deviennent assez longs, cette box flottante risque de prendre beaucoup de place. Il faudrait que je réfléchisse à une autre façon de la positionner pour être sûr qu'elle n'empiète pas sur le texte des questions quand le nombre de questions devient grand.
 
   - **Les questions avec Trivia**
 
