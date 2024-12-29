@@ -1,8 +1,8 @@
 /* https://getbootstrap.com/docs/5.3/components/buttons/#variables */
 .btn-primary {
   --bs-btn-color: #fff;
-  --bs-btn-bg: #0080ff;
-  --bs-btn-border-color: #0080ff;
+  --bs-btn-bg: #008cff;
+  --bs-btn-border-color: #008cff;
   --bs-btn-hover-color: #fff;
   --bs-btn-hover-bg: #0d11fd;
   --bs-btn-hover-border-color: #0d11fd;
@@ -15,4 +15,6 @@
   --bs-btn-disabled-bg: #70c2f5b9;
   --bs-btn-disabled-border-color: #70c2f5b9;
 }
+
+
 

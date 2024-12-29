@@ -194,16 +194,15 @@ La suite directe serait de refaire fonctionner les deux boutons.
 
   - _Ajouter ce computed dans QuestionRadio.vue :_
 
-        `const answerText = computed<string>(() =>
+        const answerText = computed<string>(() =>
+        props.options.find((option) => option.value === props.answer)?.text ??
+        props.answer,
+        );
 
-    props.options.find((option) => option.value === props.answer)?.text ??
-    props.answer,
-    ); `
+    _Remplacer {{ props.answer }} par {{ answerText }} dans le template._
+    _Expliquer pourquoi on a fait ce changement ainsi que le code du computed._
 
-        _Remplacer {{ props.answer }} par {{ answerText }} dans le template._
-        _Expliquer pourquoi on a fait ce changement ainsi que le code du computed._
-
-        ....
+      
 
   - _Que se passe-t-il lorsqu'on ne met pas de valeur à answer-detail ? Est-ce satisfaisant ? Si ce n'est pas le cas, proposer une amélioration._
 
@@ -222,7 +221,7 @@ La suite directe serait de refaire fonctionner les deux boutons.
 | Nettoyage et vérification | 10 minutes   | 15 minutes  |                                             |
 | Rapport                   | 40 minutes   | 55 minutes  |                                             |
 
-**Lien :** https://hepl-bs21inf5.github.io/sem07-project-Mia3105/
+**Lien :** https://hepl-bs21inf5.github.io/sem07-project-Mia3105/#/
 
 **Difficultés :**
 J'ai rencontré des problèmes avec le QuizTrivia. Il avait été fait en fonction de QuestionRadio et comme entre temps ce fichier a été modifié, il a fallu modifier QuizTrivia en conséquence.
@@ -255,10 +254,13 @@ J'ai rencontré des problèmes avec le QuizTrivia. Il avait été fait en foncti
     J'ai été obligé de mettre le tableau mélangé dans un nouveau tableau *questionRadiooptionsshuffleX* dans la partie script. Je fais ensuite référence à ce nouveau tableau dans les options de réponses. Ainsi le Shuflle ne se fait plus que quand on recharge la page ou quand on appuie sur le bouton "Réinitialiser" (car je l'ai ajouté dans la fonction reset).
 
 
-
   - **Un nouveau type de questions : QuestionSelect**
 
-    L
+    J'ai créé une nouvelle catégorie de question : les QuestionSelect. Les options de réponses sont contenues dans un menu déroulant.
+
+    Pour faire cela, je me suis basée sur le code des QuestionRadio, parce que le principe est le même sauf que les options ne sont pas directement visibles, et j'ai fait quelques changements.
+
+
 
 
   - **Une petite box avec un aperçu du statut des questions**

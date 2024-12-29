@@ -81,9 +81,8 @@ watch(
       Score : {{ score }} / {{ totalScore }}
     </div>
     <br />
-
+    <div v-for="(question, index) in questions" :key="index" class="boxquestion">
     <QuestionRadio
-      v-for="(question, index) in questions"
       :id="index.toString()"
       :key="index"
       v-model="questionStates[index]"
@@ -96,7 +95,8 @@ watch(
           text: answer,
         })),
       ]"
-    />
+
+    /></div>
 
     <br /><br />
     <div class="boxsatutquestions">
@@ -128,12 +128,23 @@ watch(
 
 
 <style scoped>
+
+.boxquestion {
+  border: 2px solid rgb(238, 247, 252);
+  border-radius: 10px;
+  background: rgb(238, 247, 252);
+  padding: 20px;
+  margin-bottom: 25px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px;
+}
+
 .boxsatutquestions {
   position: fixed;
   top: 5%;
   right: 0px;
   width: 40%;
-  background: white;
+  border-radius: 10px;
+  background: rgb(245, 245, 245);
   text-align: left;
   padding: 10px;
   border: 1px solid rgb(241, 241, 241);

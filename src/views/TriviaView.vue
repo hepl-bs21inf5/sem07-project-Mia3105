@@ -4,7 +4,7 @@
 
 <template>
   <div class="container mt-3">
-    <h1>Trivia</h1>
+    <h1>Quiz Trivia</h1>
     <QuizTrivia />
     Source :
     <a href="https://opentdb.com/" target="_blank">Open Trivia Database</a>

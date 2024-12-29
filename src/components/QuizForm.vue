@@ -44,10 +44,10 @@ const questionRadiooptionsshuffle1 = ref(
 
 const questionRadiooptionsshuffle2 = ref(
   shuffleArray([
-    { value: 'Théorème de Thalès', text: 'Théorème de Thalès' },
-    { value: 'Théorème des deux gendarmes', text: 'Théorème des deux gendarmes' },
-    { value: 'Théorème de Pythagore', text: 'Théorème de Pythagore' },
-    { value: 'Théorème de Cauchy', text: 'Théorème de Cauchy' },
+    { value: 'thalès', text: 'Théorème de Thalès' },
+    { value: 'gendarmes', text: 'Théorème des deux gendarmes' },
+    { value: 'pythagore', text: 'Théorème de Pythagore' },
+    { value: 'cauchy', text: 'Théorème de Cauchy' },
   ]),
 )
 
@@ -73,11 +73,12 @@ function reset(event: Event): void {
     <br />
     <div
       v-if="submitted"
-      style="width: 110px; background: #0080ff; padding: 10px; color: white; border-radius: 10px"
+      style="width: 110px; background: #008cff; padding: 10px; color: white; border-radius: 10px"
     >
       Score : {{ score }} / {{ totalScore }}
     </div>
     <br />
+    <div class="boxquestion">
     <QuestionSelect
       id="jour"
       v-model="questionStates[0]"
@@ -93,9 +94,10 @@ function reset(event: Event): void {
         { value: 'y', text: 'y' },
       ]"
       answer-detail="C'est a."
-    />
+    /></div>
 
-    <br />
+
+    <div class="boxquestion">
     <QuestionRadio
       id="pi"
       v-model="questionStates[1]"
@@ -103,10 +105,10 @@ function reset(event: Event): void {
       text="2. Quelles sont les 10 premières décimales de π ?"
       :options="questionRadiooptionsshuffle1"
       answer-detail="Que (3) j' (1) aime (4) à (1) faire (5) apprendre (9) ce (2) nombre (6) utile (5) aux (3) sages (5)."
-    />
+    /></div>
 
-    <br />
 
+    <div class="boxquestion">
     <QuestionText
       id="planète"
       v-model="questionStates[2]"
@@ -114,20 +116,21 @@ function reset(event: Event): void {
       text="3. Combien y a-t-il de planètes dans le système solaire ?"
       placeholder="Veuillez saisir un nombre"
       answer-detail="Les 8 planètes sont Mercure, Venus, Terre, Mars, Jupiter, Saturne, Uranus, Neptune. Pluton n'est plus considérée comme une planète depuis 2006."
-    />
+    /></div>
 
-    <br />
 
+
+    <div class="boxquestion">
     <QuestionRadio
       id="theoreme"
       v-model="questionStates[3]"
-      answer="Théorème de Pythagore"
+      answer="pythagore"
       text="4. Quel théorème est utilisé uniquement dans les triangles rectangles ?"
       :options="questionRadiooptionsshuffle2"
       answer-detail="Le théorème de Pythagore permet de faire un lien entre les angles et les longueurs dans un triangle rectangle."
-    />
+    /></div>
 
-    <br /><br />
+    <br />
     <div class="boxsatutquestions">
       Aperçu des questions:
       <br />
@@ -154,12 +157,22 @@ function reset(event: Event): void {
 </template>
 
 <style scoped>
+
+.boxquestion {
+  border: 2px solid rgb(238, 247, 252);
+  border-radius: 10px;
+  background: rgb(238, 247, 252);
+  padding: 20px;
+  margin-bottom: 25px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px;
+}
 .boxsatutquestions {
   position: fixed;
   top: 5%;
   right: 0px;
   width: 40%;
-  background: white;
+  border-radius: 10px;
+  background: rgb(245, 245, 245);
   text-align: left;
   padding: 10px;
   border: 1px solid rgb(241, 241, 241);

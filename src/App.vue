@@ -32,7 +32,7 @@ import { RouterLink, RouterView } from 'vue-router'
             </RouterLink>
             <RouterLink class="nav-link" to="/trivia">
               <i class="bi bi-patch-question"></i>
-              Trivia
+              Quiz Trivia
             </RouterLink>
           </li>
         </ul>

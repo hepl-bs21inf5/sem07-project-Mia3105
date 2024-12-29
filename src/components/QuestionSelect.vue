@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defineModel, defineProps, type PropType, ref, watch } from 'vue'
+import { defineModel, defineProps, type PropType, ref, watch, computed } from 'vue'
 import { QuestionState } from '@/utils/models'
 
 const model = defineModel<QuestionState>()
@@ -13,6 +13,11 @@ const props = defineProps({
     required: true,
   },
 })
+
+const answerText = computed<string>(() =>
+    props.options.find((option) => option.value === props.answer)?.text ??
+    props.answer,
+    );
 
 const value = ref<string | null>(null)
 
@@ -38,20 +43,21 @@ watch(
 </script>
 
 <template>
-  <div>
-    <label class="from-select" :for="props.id">{{ props.text }}</label>
+    {{ props.text }}
     <select
       :id="props.id"
       v-model="value"
       class="form-select"
       type="select"
       :name="props.id"
+      :anwser="answerText"
       :disabled="
         model === QuestionState.Submit ||
         model === QuestionState.Correct ||
         model === QuestionState.Wrong
       "
     >
+    <label class="from-select" :for="props.id"/>
       <option v-for="option in props.options" :key="option.value" class="form-select">
         {{ option.text }}
       </option>
@@ -59,10 +65,9 @@ watch(
 
     <div v-if="model === QuestionState.Correct || model === QuestionState.Wrong">
       <p v-if="model === QuestionState.Correct" class="text-success">Juste !</p>
-      <p v-else class="text-danger">Faux ! La réponse était : {{ props.answer }}</p>
+      <p v-else class="text-danger">Faux ! La réponse était : {{ answerText }}</p>
       <p class="blockquote-footer">{{ props.answerDetail }}</p>
     </div>
-  </div>
 </template>
 
 <style scoped>
@@ -73,4 +78,3 @@ watch(
   color: rgb(0, 210, 106) !important;
 }
 </style>
-
