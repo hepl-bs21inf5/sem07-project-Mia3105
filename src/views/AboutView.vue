@@ -10,7 +10,7 @@
       <br/><br/>
       J'espère que ces petits questionnaires vous plairont.
       <br/><br/>
-      <img  src="https://www.dragnsurvey.com/blog/wp-content/webp-express/webp-images/uploads/2024/02/quiz-neon.jpg.webp" width=400px >
+      <img  src="https://www.dragnsurvey.com/blog/wp-content/webp-express/webp-images/uploads/2024/02/quiz-neon.jpg.webp" width=350px >
     </p>
   </div>
 </template>
