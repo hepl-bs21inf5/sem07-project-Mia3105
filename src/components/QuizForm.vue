@@ -110,10 +110,10 @@ function reset(event: Event): void {
     <QuestionText
       id="planète"
       v-model="questionStates[2]"
-      :answer="['8', 'huit']"
+      :answer="['8', 'huit', 'Huit']"
       text="3. Combien y a-t-il de planètes dans le système solaire ?"
       placeholder="Veuillez saisir un nombre"
-      answer-detail="Les 8 planètes sont Mercure, Venus, Terre, Mars, Jupiter, Saturne, Uranus, Neptune. Pluton n'est plus considérée comme une planète."
+      answer-detail="Les 8 planètes sont Mercure, Venus, Terre, Mars, Jupiter, Saturne, Uranus, Neptune. Pluton n'est plus considérée comme une planète depuis 2006."
     />
 
     <br />

@@ -44,14 +44,19 @@ function reset(event: Event): void {
   document.documentElement.scrollTop = 0
 }
 
+function reload(event: Event): void {
+  event.preventDefault()
+  location.reload()
+  document.body.scrollTop = 0
+  document.documentElement.scrollTop = 0
+}
+
 fetch('https://opentdb.com/api.php?amount=10&type=multiple')
   .then((response) => response.json())
   .then((data) => (questions.value = data.results))
 
 const model = defineModel<QuestionState>()
 const value = ref<string | null>(null)
-
-
 
 watch(
   value,
@@ -64,8 +69,6 @@ watch(
   },
   { immediate: true },
 )
-
-
 </script>
 
 <template>
@@ -124,7 +127,9 @@ watch(
 
     <div style="text-align: right">
       <button class="btn btn-primary" @:click="reset">Réinitialiser</button>
+      &nbsp; &nbsp;
+      <button class="btn btn-primary" @:click="reload">Générer de nouvelles questions</button>
     </div>
-    <br />
+    <br/>
   </form>
 </template>

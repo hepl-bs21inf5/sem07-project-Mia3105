@@ -251,4 +251,8 @@ J'ai rencontré des problèmes avec le QuizTrivia. Il avait été fait en foncti
 
     L
 
+  - Plusieurs options possibles pour les QuestionText
+
+    L
+
 **Suite du projet :**
