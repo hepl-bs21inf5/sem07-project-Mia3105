@@ -58,8 +58,6 @@ fetch('https://opentdb.com/api.php?amount=10&type=multiple')
 const model = defineModel<QuestionState>()
 const value = ref<string | null>(null)
 
-
-
 watch(
   value,
   (newValue) => {
@@ -82,18 +80,16 @@ watch(
     >
       Score : {{ score }} / {{ totalScore }}
     </div>
-    <br/>
-    <div
-      v-if="score == totalScore"
-      style="font-size: x-large; font-weight: bold;"
-    >
-    <img src="https://images.emojiterra.com/mozilla/1024px/1f389.png" width=100px >
-    &nbsp; &nbsp;
-    BRAVO !!
-    &nbsp; &nbsp;
-    <img src="https://images.emojiterra.com/mozilla/1024px/1f389.png" width=100px >
+    <br />
+    <div v-if="score == totalScore" style="font-size: x-large; font-weight: bold">
+      <img src="https://images.emojiterra.com/mozilla/1024px/1f389.png" width="100px" />
+      &nbsp; &nbsp; BRAVO !! &nbsp; &nbsp;
+      <img src="https://images.emojiterra.com/mozilla/1024px/1f389.png" width="100px" />
       &nbsp; &nbsp;
-      <img src="https://images.emojiterra.com/google/noto-emoji/unicode-16.0/color/1024px/1f44f.png" width=100px >
+      <img
+        src="https://images.emojiterra.com/google/noto-emoji/unicode-16.0/color/1024px/1f44f.png"
+        width="100px"
+      />
     </div>
     <br />
     <div v-for="(question, index) in questions" :key="index" class="box_question">
@@ -102,7 +98,7 @@ watch(
         :key="index"
         v-model="questionStates[index]"
         :answer="question.correct_answer"
-        :text="index+1 + '. ' + question.question"
+        :text="index + 1 + '. ' + question.question"
         :options="[
           { value: question.correct_answer, text: question.correct_answer },
           ...question.incorrect_answers.map((answer) => ({

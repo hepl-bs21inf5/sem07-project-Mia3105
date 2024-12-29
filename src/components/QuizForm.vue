@@ -2,7 +2,6 @@
 import { computed, ref } from 'vue'
 import QuestionRadio from '@/components/QuestionRadio.vue'
 import QuestionText from '@/components/QuestionText.vue'
-import QuestionCheckbox from '@/components/QuestionCheckbox.vue'
 import { QuestionState } from '@/utils/models'
 import QuestionSelect from './QuestionSelect.vue'
 
@@ -77,18 +76,16 @@ function reset(event: Event): void {
     >
       Score : {{ score }} / {{ totalScore }}
     </div>
-    <br/>
-    <div
-      v-if="score == totalScore"
-      style="font-size: x-large; font-weight: bold;"
-    >
-    <img src="https://images.emojiterra.com/mozilla/1024px/1f389.png" width=100px >
-    &nbsp; &nbsp;
-    BRAVO !!
-    &nbsp; &nbsp;
-    <img src="https://images.emojiterra.com/mozilla/1024px/1f389.png" width=100px >
+    <br />
+    <div v-if="score == totalScore" style="font-size: x-large; font-weight: bold">
+      <img src="https://images.emojiterra.com/mozilla/1024px/1f389.png" width="100px" />
+      &nbsp; &nbsp; BRAVO !! &nbsp; &nbsp;
+      <img src="https://images.emojiterra.com/mozilla/1024px/1f389.png" width="100px" />
       &nbsp; &nbsp;
-      <img src="https://images.emojiterra.com/google/noto-emoji/unicode-16.0/color/1024px/1f44f.png" width=100px >
+      <img
+        src="https://images.emojiterra.com/google/noto-emoji/unicode-16.0/color/1024px/1f44f.png"
+        width="100px"
+      />
     </div>
     <br />
     <div class="box_question">
@@ -103,7 +100,7 @@ function reset(event: Event): void {
           { value: '7', text: '7' },
           { value: '3', text: '3' },
         ]"
-        answer-detail="C'est a."
+        answer-detail="Le premier nombre premier est 2."
       />
     </div>
 
@@ -114,7 +111,7 @@ function reset(event: Event): void {
         answer="3.1415926535"
         text="2. Quelles sont les 10 premières décimales de π ?"
         :options="questionRadio_options_shuffle1"
-        answer-detail="Que (3) j' (1) aime (4) à (1) faire (5) apprendre (9) ce (2) nombre (6) utile (5) aux (3) sages (5)."
+        answer-detail="Voilà une phrase pour s'en souvenir : Que (3) j' (1) aime (4) à (1) faire (5) apprendre (9) ce (2) nombre (6) utile (5) aux (3) sages (5)."
       />
     </div>
 
@@ -145,7 +142,7 @@ function reset(event: Event): void {
       Aperçu des questions:
       <br />
       <div style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center">
-        <!-- Permet que les aperçus s'affichent  en ligne et reviennent à la ligne quand la ligne est pleine -->
+        <!-- Permet que les aperçus s'affichent en ligne et reviennent à la ligne quand la ligne est pleine -->
         <div v-for="(state, index) in questionStates" :key="index">
           {{ index + 1 }}. {{ state }}
         </div>
