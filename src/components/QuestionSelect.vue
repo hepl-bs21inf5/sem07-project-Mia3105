@@ -63,10 +63,11 @@ watch(
       </option>
     </select>
 
+    <br/>
     <div v-if="model === QuestionState.Correct || model === QuestionState.Wrong">
       <p v-if="model === QuestionState.Correct" class="text-success">Juste !</p>
       <p v-else class="text-danger">Faux ! La réponse était : {{ answerText }}</p>
-      <p class="blockquote-footer">{{ props.answerDetail }}</p>
+      <p v-if="props.answerDetail" class="blockquote-footer">{{ props.answerDetail }}</p>
     </div>
 </template>
 

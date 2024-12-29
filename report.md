@@ -9,12 +9,13 @@
 | Quiz      | 1h           | 2h20        | Pour lancer le lien : npm run dev |
 | Rapport   | 20 minutes   | 25 minutes  |                                   |
 
-**Difficultés :**
+### Difficultés :
+
 Dans un premier temps, j'ai trouvé assez difficile de faire le compteur de score et de faire le bouton Réinitialiser. J'ai encore un problème, car si toutes les questions sont complétées, le bouton pour réinitialiser fonctionne une première fois comme le bouton Temriner et ensuite en appuyant une deuxième fois, il réinitialise.
 
-**Explications et réflexions sur le code :**
+### Explications et réflexions sur le code :
 
-- _Questions :_
+- **Questions :**
 
   1. Expliquer le rôle des fichiers suivants :
 
@@ -36,20 +37,25 @@ Dans un premier temps, j'ai trouvé assez difficile de faire le compteur de scor
   2. Dans le fichier QuizForm.vue :
 
   - _Quelles sont les similarités et les différences entre ref et computed ?_
+
     Les deux permettent de définir un objet.
     ref permet de définir un string, int, ...
     computed permet de définir une fonction, quelque chose qui va être lu et executé.
+
   - _Que se passe-t-il lorsqu'on clique sur le bouton "Terminer" ?_
+
     Lorsque l'on clique sur le bouton Terminer, on rentre dans la fonction submit. Cette fonction va compter le nombre de point qui ont été fait et va ensuite ouvrir une fenêtre textuelle qui va afficher un récapitulatif des réponses données et qui va ensuite afficher le score.
+
   - _Qu'est-ce qu'un v-model ?_
 
     Cela permet de faire le lien entre la page et le code. S'il y a un changement dans le code, cela changera sur la page et inversément.
 
-  - _À quoi sert le :class="{ disabled: !filled }" ?_
+  - _À quoi sert le `:class="{ disabled: !filled }"` ?_
 
-    Cela désactive le bouton Terminer tant que la fonction filled ne revoie pas vrai, c'est-à-dire tant que toutes les question n'ont pas de réponses. Il faut répondre à toutes les questions pour pouvoir appuyer sur le bouton Terminer.
+    Cela désactive le bouton Terminer tant que la fonction filled ne reçoit pas "True", c'est-à-dire tant que toutes les question n'ont pas de réponses. Il faut répondre à toutes les questions pour pouvoir appuyer sur le bouton Terminer.
 
-**Suite du projet :**
+### Suite du projet :
+
 Je trouve frustrant de devoir à chaque fois tout réécrire, autant pour créer les questions que dans la fonction filled. Il faudrait trouver un moyen d'écrire cela de façon plus concise.
 
 ---
@@ -64,13 +70,14 @@ Je trouve frustrant de devoir à chaque fois tout réécrire, autant pour créer
 | QuestionCheckbox (BONUS) | 40 minutes   | 35 minutes  | Le bouton Terminer et Réinitialiser ne fonctionnent pas (mais comme ils sont modifiés dans le semaine 3, je n'ai pas plus essayé) |
 | Rapport                  | 25 minutes   | 15 minutes  |                                                                                                                                   |
 
-**Difficultés :**
+### Difficultés :
+
 Je n'ai pas eu de grande difficultée cette semaine.
 Peut-être une petite difficultée pour bien comprendre le fichier QuestionRadio pour être capable de reproduire et adapter dans le QuestionText.
 
-**Explications et réflexions sur le code :**
+### Explications et réflexions sur le code :
 
-- _Questions :_
+- **Questions :**
 
   - _Quelle est la différence entre un prop et un modèle (v-model) ?_
 
@@ -81,7 +88,8 @@ Peut-être une petite difficultée pour bien comprendre le fichier QuestionRadio
 
     Le placeholder ne serait pas nécessaire si, dans l'intitulé de la quesiton, on écrivait directement que la réponse est un nombre à entrer.
 
-**Suite du projet :**
+### Suite du projet :
+
 Est-ce que ce serait possible de rendre la création des questions encore plus simple ? D'avoir une sorte de formulaire général avec une boucle qui ferait qu'on n'a pas besoin de faire appel aux QuestionRadio et QuestionText à chaque fois que l'on veut crééer un question.
 
 ---
@@ -94,12 +102,13 @@ Est-ce que ce serait possible de rendre la création des questions encore plus s
 | Score    | 40 minutes   | 20 minutes  |              |
 | Rapport  | 25 minutes   | 20 minutes  |              |
 
-**Difficultés :**
+### Difficultés :
+
 J'ai eu un peu de mal à bien comprendre le watch.
 
-**Explications et réflexions sur le code :**
+### Explications et réflexions sur le code :
 
-- _Questions :_
+- **Questions :**
 
   - _À quoi sert l'option immediate: true dans le watch ?_
 
@@ -132,7 +141,8 @@ J'ai eu un peu de mal à bien comprendre le watch.
     La première manière avec le filter fait un tri dans les questions et filtre uniquement les questions qui ont "Correct" comme satus et les met dans une liste. Le score est ensuite la longueur de la liste.
     La deuxième manière avec le for parcourt toutes les questions et quand elle rencontre une question dont le statut est "Correct", elle augmente le nombre "score" de 1.
 
-**Suite du projet :**
+### Suite du projet :
+
 La suite directe serait de refaire fonctionner les deux boutons.
 
 ---
@@ -146,33 +156,36 @@ La suite directe serait de refaire fonctionner les deux boutons.
 | Réponses immuables | 5 minutes    | 5 minutes   |              |
 | Rapport            | 25 minutes   | 20 minutes  |              |
 
-**Difficultés :**
+### Difficultés :
 
-**Explications et réflexions sur le code :**
+J'ai de nouveau eu quelques porblèmes à bien saisir comment fonctionnait le watch pour le retranscrire dans les autres questions.
 
-- _Questions :_
+### Explications et réflexions sur le code :
+
+- **Questions :**
 
   - _Comment pourrait-on réécrire la ligne suivante sans l'opérateur ternaire (avec des if et else)_
-  
+
     `model.value = value.value === props.answer ? QuestionState.Correct : QuestionState.Wrong;`
 
-    Cette ligne va mettre dans model.value une valeur. Elle vérifie si value.value = props.anwer, si c'est vrai model.value = QuestionState.Correct et si l'égalité est fausse model.value = QuestionState.Wrong. 
+    Cette ligne va mettre dans model.value une valeur. Elle vérifie si value.value = props.anwer, si c'est vrai model.value = QuestionState.Correct et si l'égalité est fausse model.value = QuestionState.Wrong.
 
     Si on écrit cela en code on obtient :
 
         if (value.value === props.answer){
           model.value = QuestionState.Correct ;
-        } 
+        }
         else {
           model.value = QuestionState.Wrong ;
-        } 
+        }
 
   - _Comment pourrait-on réécrire autrement la logique du watch sur value ?_
 
-    ...... (à répondre)
+    ...............
 
-**Suite du projet :**
-...... (à répondre)
+### Suite du projet :
+
+..................
 
 ---
 
@@ -182,15 +195,15 @@ La suite directe serait de refaire fonctionner les deux boutons.
 | ----------------- | ------------ | ----------- | ------------ |
 | Réponse détaillée | 20 minutes   | 20 minutes  |              |
 | Style             | 20 minutes   | 10 minutes  |              |
-| Amélioration      | ...          |             |              |
-|                   |              |             |              |
+| Améliorations     | 1h           | 1h30        |              |
 | Rapport           | 30 minutes   | 25 minutes  |              |
 
-**Difficultés :**
+### Difficultés :
+..................
 
-**Explications et réflexions sur le code :**
+### Explications et réflexions sur le code :
 
-- _Questions :_
+- **Questions :**
 
   - _Ajouter ce computed dans QuestionRadio.vue :_
 
@@ -202,13 +215,17 @@ La suite directe serait de refaire fonctionner les deux boutons.
     _Remplacer {{ props.answer }} par {{ answerText }} dans le template._
     _Expliquer pourquoi on a fait ce changement ainsi que le code du computed._
 
-      
+    ............
 
   - _Que se passe-t-il lorsqu'on ne met pas de valeur à answer-detail ? Est-ce satisfaisant ? Si ce n'est pas le cas, proposer une amélioration._
 
-    ...
+    Lorsqu'on ne met pas de answer-detail, il y a quand même un tiret qui s'affiche. Ce n'est pas satisfaisant. Il faudrait que rien ne s'affiche s'il n'y a pas d'answer-detail.
 
-**Suite du projet :**
+    Pour faire cela, il suffit d'ajouter une condition à l'affichage du answerdetail. On veut qu'il s'affiche uniquement s'il y en a un, donc on ajoute un v-if devant son affichage :
+    `<p v-if="props.answerDetail" class="blockquote-footer">{{ props.answerDetail }}</p>`
+    Avec le 'v-if="props.answerDetail', on vérifie qu'il existe bien et qu'il n'est pas vide. S'il est vide, alors on n'affiche rien (pas de tiret).
+
+### Suite du projet :
 
 ---
 
@@ -217,16 +234,17 @@ La suite directe serait de refaire fonctionner les deux boutons.
 | Tâche                     | Temps estimé | Temps passé | Commentaires                                |
 | ------------------------- | ------------ | ----------- | ------------------------------------------- |
 | Déploiement               | 10 minutes   | 30 minutes  | J'ai rencontré des problèmes avec le Trivia |
-| Améliorations             | 2h           | 3h          |                                             |
+| Améliorations             | 2h           | 3h + ...    | (... = on n'a jamais vraiment fini)         |
 | Nettoyage et vérification | 10 minutes   | 15 minutes  |                                             |
 | Rapport                   | 40 minutes   | 55 minutes  |                                             |
 
-**Lien :** https://hepl-bs21inf5.github.io/sem07-project-Mia3105/#/
+### Lien : https://hepl-bs21inf5.github.io/sem07-project-Mia3105/#/
 
-**Difficultés :**
+### Difficultés :
+
 J'ai rencontré des problèmes avec le QuizTrivia. Il avait été fait en fonction de QuestionRadio et comme entre temps ce fichier a été modifié, il a fallu modifier QuizTrivia en conséquence.
 
-**Explications et réflexions sur le code :**
+### Explications et réflexions sur le code :
 
 - _Améliorations :_
 
@@ -234,7 +252,7 @@ J'ai rencontré des problèmes avec le QuizTrivia. Il avait été fait en foncti
 
     J'ai choisi cette option car je la trouve importante. Elle donne la possibilité de refaire le quiz en réfléchissant un minimum et de ne pas simplement reséléctionner les mêmes options aux mêmes endroits.
 
-    J'ai implémenté cette option dans le QuizForm. 
+    J'ai implémenté cette option dans le QuizForm.
     J'ai pris une fonction ShuffleArray qui j'ai trouvé sur un forum :
 
           function shuffleArray<T>(array: T[]): T[] {
@@ -248,11 +266,10 @@ J'ai rencontré des problèmes avec le QuizTrivia. Il avait été fait en foncti
 
     Elle parcours la liste avec un i depuis la fin en remontant et génère un nombre j aléatoire. Elle inverse ensuite la position des éléments i et de j.
 
-    J'ai ensuite utilisé cette fonction sur le tableau de réponses des QuestionRadio. 
-    
-    En voulant faire cela, j'ai d'abord rencontré un problème. J'ai d'abord fait le Shuffle directement dans le template de la question. En faisant cela, les options se mélangeaient à chaque fois qu'on en choisissait une. J'ai réfléchi au problème et je me suis rendu compte qu'en faisant de cette façon, le Shuffle était inscrit dans la boucle v-for et donc se faisait à chaque changement. 
-    J'ai été obligé de mettre le tableau mélangé dans un nouveau tableau *questionRadiooptionsshuffleX* dans la partie script. Je fais ensuite référence à ce nouveau tableau dans les options de réponses. Ainsi le Shuflle ne se fait plus que quand on recharge la page ou quand on appuie sur le bouton "Réinitialiser" (car je l'ai ajouté dans la fonction reset).
+    J'ai ensuite utilisé cette fonction sur le tableau de réponses des QuestionRadio.
 
+    En voulant faire cela, j'ai d'abord rencontré un problème. J'ai d'abord fait le Shuffle directement dans le template de la question. En faisant cela, les options se mélangeaient à chaque fois qu'on en choisissait une. J'ai réfléchi au problème et je me suis rendu compte qu'en faisant de cette façon, le Shuffle était inscrit dans la boucle v-for et donc se faisait à chaque changement.
+    J'ai été obligé de mettre le tableau mélangé dans un nouveau tableau _questionRadiooptionsshuffleX_ dans la partie script. Je fais ensuite référence à ce nouveau tableau dans les options de réponses. Ainsi le Shuflle ne se fait plus que quand on recharge la page ou quand on appuie sur le bouton "Réinitialiser" (car je l'ai ajouté dans la fonction reset).
 
   - **Un nouveau type de questions : QuestionSelect**
 
@@ -260,19 +277,18 @@ J'ai rencontré des problèmes avec le QuizTrivia. Il avait été fait en foncti
 
     Pour faire cela, je me suis basée sur le code des QuestionRadio, parce que le principe est le même sauf que les options ne sont pas directement visibles, et j'ai fait quelques changements.
 
-
-
+    .............
 
   - **Une petite box avec un aperçu du statut des questions**
 
-    L
+    .............
 
   - **Les questions avec Trivia**
 
-    L
+    .............
 
   - **Plusieurs options possibles pour les QuestionText**
 
-    L
+    .............
 
-**Suite du projet :**
+### Suite du projet :

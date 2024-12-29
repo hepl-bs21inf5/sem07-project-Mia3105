@@ -82,21 +82,21 @@ watch(
     </div>
     <br />
     <div v-for="(question, index) in questions" :key="index" class="boxquestion">
-    <QuestionRadio
-      :id="index.toString()"
-      :key="index"
-      v-model="questionStates[index]"
-      :answer="question.correct_answer"
-      :text="(index+1) + '. ' + question.question"
-      :options="[
-        { value: question.correct_answer, text: question.correct_answer },
-        ...question.incorrect_answers.map((answer) => ({
-          value: answer,
-          text: answer,
-        })),
-      ]"
-
-    /></div>
+      <QuestionRadio
+        :id="index.toString()"
+        :key="index"
+        v-model="questionStates[index]"
+        :answer="question.correct_answer"
+        :text="index + 1 + '. ' + question.question"
+        :options="[
+          { value: question.correct_answer, text: question.correct_answer },
+          ...question.incorrect_answers.map((answer) => ({
+            value: answer,
+            text: answer,
+          })),
+        ]"
+      />
+    </div>
 
     <br /><br />
     <div class="boxsatutquestions">
@@ -104,13 +104,11 @@ watch(
       <br />
       <div style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center">
         <!-- Permet que les aperçus s'affichent  en ligne et reviennent à la ligne quand la ligne est pleine -->
-        <div
-          v-for="(state, index) in questionStates"
-          :key="index"
-        >
+        <div v-for="(state, index) in questionStates" :key="index">
           {{ index + 1 }}. {{ state }}
         </div>
-      </div></div>
+      </div>
+    </div>
 
     <br />
     <div style="text-align: left">
@@ -122,13 +120,11 @@ watch(
       &nbsp; &nbsp;
       <button class="btn btn-primary" @:click="reload">Générer de nouvelles questions</button>
     </div>
-    <br/><br/><br/><br/><br/><br/><br/>
+    <br /><br /><br /><br /><br /><br /><br />
   </form>
 </template>
 
-
 <style scoped>
-
 .boxquestion {
   border: 2px solid rgb(238, 247, 252);
   border-radius: 10px;
@@ -156,7 +152,7 @@ watch(
 
 @media (max-width: 745px) {
   .boxsatutquestions {
-    top :  auto ;
+    top: auto;
     bottom: 30px;
     left: 0;
     right: 0;
