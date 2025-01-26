@@ -26,6 +26,10 @@ import { RouterLink, RouterView } from 'vue-router'
       <div id="navbar" class="collapse navbar-collapse">
         <ul class="navbar-nav">
           <li class="nav-item">
+            <RouterLink class="nav-link" to="/voc">
+              <i class="bi bi-book"></i>
+              Vocabulaire
+            </RouterLink>
             <RouterLink class="nav-link" to="/about">
               <i class="bi bi-hand-index"></i>
               À propos
