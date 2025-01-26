@@ -39,7 +39,7 @@ const vocabList = ref([
   {
     francais: "SALUT À TOUS",
     prononciation: "SALY A TUS",
-    albanais: "KOH TE GJAT SJEMI PA",
+    albanais: "PERSHENDETJE TE GJITHVE",
     audio : ""
   },
   {
@@ -63,7 +63,7 @@ const vocabList = ref([
     francais: "A BIENTÔT",
     prononciation: "À BJENTO",
     albanais: "SHIHEMI SE SHPEJTI",
-    audio: "audios/a_bientot.m4a"
+    audio: "audios/a_bientot.mp3"
   },
   {
     francais: "AU REVOIR",
