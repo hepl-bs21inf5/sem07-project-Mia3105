@@ -171,7 +171,7 @@ const vocabList = ref([
 ]);
 
 
-function playAudio(audioFile: string) {
+function playAudio(audioFile: string | undefined) {
   const audio = new Audio(audioFile);
   audio.play();
 }
