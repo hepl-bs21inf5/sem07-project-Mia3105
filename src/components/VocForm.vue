@@ -32,7 +32,7 @@
   <br><br><br><br>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue';
 
 const vocabList = ref([
